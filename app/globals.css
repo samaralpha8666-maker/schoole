@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Brand palette — matched to actual ApnaCampus dashboard (indigo-purple sidebar) ── */
+  --brand-dark: #565293;
+  /* deep indigo — matches sidebar */
+  --brand-mid: #312e81;
+  /* medium indigo */
+  --brand-accent: #4f46e5;
+  /* primary indigo CTA */
+  --brand-light: #eef2ff;
+  /* very light indigo tint */
+  --brand-hover: #4338ca;
+  /* darker on hover */
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --text-body: #1e293b;
+  --text-muted: #64748b;
+  --teal-accent: #10b981;
+  /* secondary emerald — matches dashboard green cards */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--white);
+  color: var(--text-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Section utilities ── */
+.section-white {
+  background-color: var(--white);
+}
+
+.section-tinted {
+  background-color: var(--gray-50);
+}
+
+.section-dark {
+  background-color: var(--brand-dark);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--white);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 28px rgba(79, 70, 229, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ── Icon box (indigo tint) ── */
+.icon-box {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-accent);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #4f46e5 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--brand-accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(79, 70, 229, 0.45);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-brand-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border: 2px solid var(--brand-accent);
+  color: var(--brand-accent);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-brand-outline:hover {
+  background: var(--brand-accent);
+  color: #fff;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-accent);
+  border-radius: 3px;
+}
+
+/* Range input */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brand-accent);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
