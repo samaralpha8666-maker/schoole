@@ -59,20 +59,20 @@ export function FaqAccordion() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 font-sans text-indigo-950">
+    <div className="max-w-4xl mx-auto space-y-8 font-sans text-base-dark">
       
       {/* Category & Search Controls */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white border border-slate-200/85 p-4 rounded-3xl shadow-sm">
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white border border-shade-dark/10 p-4 rounded-[32px] md:rounded-full shadow-none">
         
         {/* Search bar */}
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-shade-dark/55" />
           <input 
             type="text"
             placeholder="Search FAQs..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-2xl text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30"
+            className="w-full pl-10 pr-4 py-2.5 border border-shade-dark/10 rounded-full text-xs font-bold uppercase tracking-widest text-base-dark placeholder-shade-dark/40 bg-base-cream/10 focus:outline-none focus:border-accent-green"
           />
         </div>
 
@@ -82,13 +82,13 @@ export function FaqAccordion() {
             <button
               key={cat}
               onClick={() => {
-                setActiveCategory(cat as any);
+                setActiveCategory(cat as 'All' | 'Security' | 'Pricing' | 'Features' | 'Onboarding');
                 setOpenIndex(null);
               }}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all border shrink-0 ${
+              className={`px-4 py-1.5 rounded-full text-[9px] uppercase tracking-widest font-bold transition-all border shrink-0 ${
                 activeCategory === cat 
-                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
-                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-indigo-600'
+                  ? 'bg-accent-green border-accent-green text-white shadow-none'
+                  : 'bg-[#F5F2EB] border-shade-dark/10 text-shade-dark hover:bg-accent-lime hover:text-accent-green'
               }`}
             >
               {cat}
@@ -106,7 +106,7 @@ export function FaqAccordion() {
             return (
               <div 
                 key={idx}
-                className="bg-white border border-slate-200 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-sm"
+                className="bg-white border border-shade-dark/10 rounded-[28px] overflow-hidden transition-all duration-300 hover:shadow-none"
               >
                 {/* Trigger Button */}
                 <button
@@ -114,12 +114,12 @@ export function FaqAccordion() {
                   className="w-full text-left p-6 flex justify-between items-center gap-4 focus:outline-none"
                 >
                   <div className="flex gap-3 items-center">
-                    <HelpCircle className="w-5 h-5 text-indigo-600 shrink-0" />
-                    <span className="font-serif text-sm sm:text-base font-bold text-indigo-950 leading-tight">
+                    <HelpCircle className="w-5 h-5 text-accent-green shrink-0" />
+                    <span className="font-serif text-sm sm:text-base font-normal text-base-dark leading-tight tracking-wide">
                       {faq.question}
                     </span>
                   </div>
-                  <span className="p-1 rounded-xl bg-slate-50 border border-slate-200 shrink-0 text-slate-500">
+                  <span className="p-1.5 rounded-full bg-[#FAF9F6] border border-shade-dark/10 shrink-0 text-[#2B2927]/60">
                     {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </span>
                 </button>
@@ -127,10 +127,10 @@ export function FaqAccordion() {
                 {/* Collapsible Answer */}
                 <div 
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isOpen ? 'max-h-96 opacity-100 border-t border-slate-100 bg-slate-50/50' : 'max-h-0 opacity-0'
+                    isOpen ? 'max-h-96 opacity-100 border-t border-shade-dark/5 bg-[#FAF9F6]/50' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="p-6 text-xs sm:text-sm text-slate-650 leading-relaxed font-light">
+                  <p className="p-6 text-xs sm:text-sm text-text-body leading-relaxed font-light font-sans">
                     {faq.answer}
                   </p>
                 </div>
@@ -138,7 +138,7 @@ export function FaqAccordion() {
             );
           })
         ) : (
-          <div className="text-center py-12 text-slate-400 font-semibold bg-white border border-slate-200 rounded-3xl">
+          <div className="text-center py-12 text-[#2B2927]/60 font-bold bg-white border border-shade-dark/10 rounded-[28px] uppercase tracking-widest text-[10px]">
             No FAQs found matching your criteria.
           </div>
         )}

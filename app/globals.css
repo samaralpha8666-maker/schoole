@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-gotu), Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-archivo), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-base-cream: #FAF9F6;
+  --color-shade-dark: #2B2927;
+  --color-base-dark: #1C1A19;
+  --color-accent-green: #2D5A27;
+  --color-accent-lime: #E2EBD5;
+  --color-accent-sand: #EBDCB9;
+  --color-text-body: #3C3A38;
+}
+
 :root {
-  /* ── Brand palette — matched to actual ApnaCampus dashboard (indigo-purple sidebar) ── */
-  --brand-dark: #565293;
-  /* deep indigo — matches sidebar */
-  --brand-mid: #312e81;
-  /* medium indigo */
-  --brand-accent: #4f46e5;
-  /* primary indigo CTA */
-  --brand-light: #eef2ff;
-  /* very light indigo tint */
-  --brand-hover: #4338ca;
-  /* darker on hover */
-  --white: #ffffff;
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-400: #94a3b8;
-  --gray-600: #475569;
-  --text-body: #1e293b;
-  --text-muted: #64748b;
-  --teal-accent: #10b981;
-  /* secondary emerald — matches dashboard green cards */
+  /* ── Brand palette — mapped to Swakaash Luxury Organic Theme ── */
+  --brand-dark: #1C1A19;
+  /* deep forest dark */
+  --brand-mid: #2D5A27;
+  /* rich forest green */
+  --brand-accent: #2D5A27;
+  /* primary accent CTA */
+  --brand-light: #E2EBD5;
+  /* light lime tint */
+  --brand-hover: #1C1A19;
+  /* dark green on hover */
+  --white: #FAF9F6;
+  /* cream base background */
+  --gray-50: #FAF9F6;
+  --gray-100: #E2EBD5;
+  --gray-400: #C7B198;
+  --gray-600: #2B2927;
+  --text-body: #3C3A38;
+  --text-muted: #2B2927;
+  --teal-accent: #2D5A27;
 }
 
 html {
@@ -28,9 +41,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--white);
-  color: var(--text-body);
+  font-family: var(--font-archivo), sans-serif;
+  background-color: var(--color-base-cream);
+  color: var(--color-text-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,116 +51,122 @@ body {
 
 /* ── Section utilities ── */
 .section-white {
-  background-color: var(--white);
+  background-color: var(--color-base-cream);
 }
 
 .section-tinted {
-  background-color: var(--gray-50);
+  background-color: #F5F2EB;
 }
 
 .section-dark {
-  background-color: var(--brand-dark);
+  background-color: var(--color-accent-green);
 }
 
 /* ── Card ── */
 .card {
-  background: var(--white);
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(43, 41, 39, 0.1);
+  border-radius: 24px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 28px rgba(79, 70, 229, 0.12);
+  box-shadow: 0 8px 24px rgba(45, 90, 39, 0.08);
   transform: translateY(-4px);
 }
 
-/* ── Icon box (indigo tint) ── */
+/* ── Icon box (lime tint) ── */
 .icon-box {
   width: 48px;
   height: 48px;
-  background: var(--brand-light);
-  border-radius: 10px;
+  background: var(--color-accent-lime);
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brand-accent);
+  color: var(--color-accent-green);
   font-size: 1.2rem;
   flex-shrink: 0;
 }
 
 /* ── Gradient text ── */
 .gradient-text {
-  background: linear-gradient(135deg, #818cf8 0%, #4f46e5 50%, #10b981 100%);
+  background: linear-gradient(135deg, #2D5A27 0%, #1C1A19 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Buttons ── */
+/* ── Buttons styled as premium rounded-full editorial pills ── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 28px;
-  background: var(--brand-accent);
+  padding: 14px 32px;
+  background: var(--color-accent-green);
   color: #fff;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-  background: var(--brand-hover);
+  background: var(--color-base-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(79, 70, 229, 0.45);
+  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.15);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 28px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 14px 32px;
+  border: 1px solid rgba(250, 249, 246, 0.5);
   color: #fff;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
   transition: background 0.2s, border-color 0.2s;
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(250, 249, 246, 0.15);
+  border-color: rgba(250, 249, 246, 0.9);
 }
 
 .btn-brand-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 26px;
-  border: 2px solid var(--brand-accent);
-  color: var(--brand-accent);
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  padding: 13px 30px;
+  border: 1.5px solid var(--color-accent-green);
+  color: var(--color-accent-green);
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
   transition: background 0.2s, color 0.2s;
 }
 
 .btn-brand-outline:hover {
-  background: var(--brand-accent);
+  background: var(--color-accent-green);
   color: #fff;
 }
 
 /* ── Section label ── */
 .section-label {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--brand-accent);
+  color: var(--color-accent-green);
 }
 
 /* ── Custom scrollbar ── */
@@ -156,11 +175,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-50);
+  background: var(--color-base-cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-accent);
+  background: var(--color-accent-green);
   border-radius: 3px;
 }
 
@@ -170,7 +189,13 @@ input[type='range']::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--brand-accent);
+  background: var(--color-accent-green);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+  box-shadow: 0 0 10px rgba(45, 90, 39, 0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(43, 41, 39, 0.08);
 }
