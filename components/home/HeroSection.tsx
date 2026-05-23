@@ -204,7 +204,7 @@ export default function HeroSection() {
       <div className="fixed right-6 bottom-6 flex flex-col gap-3.5 z-40 pointer-events-auto">
         {/* WhatsApp Icon - Traditional green layout */}
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/918928567312"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12.5 h-12.5 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-115 active:scale-95 transition-all duration-200"

@@ -15,7 +15,8 @@ const footerLinks = [
     title: 'Security & Info',
     links: [
       { label: 'Contact Support', href: '/contact' },
-      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Account Deletion', href: '/delete-account' },
       { label: 'Terms of Service', href: '/terms' },
       { label: 'FAQs', href: '/#faq' },
     ],
@@ -23,7 +24,7 @@ const footerLinks = [
   {
     title: 'Quick Contact',
     links: [
-      { label: '+91 98765 43210', href: 'tel:+919876543210' },
+      { label: '+91 89285 67312', href: 'tel:+918928567312' },
       { label: 'hello@apanacampus.com', href: 'mailto:hello@apanacampus.com' },
       { label: 'Google Play Store', href: 'https://play.google.com', external: true },
     ],

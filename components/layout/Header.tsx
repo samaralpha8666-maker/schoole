@@ -4,13 +4,27 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Menu, X, ChevronRight,
+  Menu, X, ChevronRight, ChevronDown,
   Phone, Mail, MapPin,
+  GraduationCap, Users, BookOpen, Coins, Calendar,
+  CalendarDays, ClipboardList, BarChart3, Settings,
 } from 'lucide-react';
 
+const erpFeatures = [
+  { title: "Students", icon: GraduationCap, bg: "#E2EBD5", color: "#2D5A27", desc: "Complete lifecycle & documents" },
+  { title: "Staff", icon: Users, bg: "#E2EBD5", color: "#2D5A27", desc: "HR, leaves & attendance" },
+  { title: "Academic", icon: BookOpen, bg: "#E2EBD5", color: "#2D5A27", desc: "Classes, syllabus & scheduling" },
+  { title: "Fees", icon: Coins, bg: "#E2EBD5", color: "#2D5A27", desc: "Collection, invoices & tracking" },
+  { title: "Timetable", icon: Calendar, bg: "#E2EBD5", color: "#2D5A27", desc: "Automated conflict-free grids" },
+  { title: "Calendar", icon: CalendarDays, bg: "#E2EBD5", color: "#2D5A27", desc: "School-wide events & reminders" },
+  { title: "Examination", icon: ClipboardList, bg: "#E2EBD5", color: "#2D5A27", desc: "Marks, report cards & results" },
+  { title: "Reports", icon: BarChart3, bg: "#E2EBD5", color: "#2D5A27", desc: "Actionable custom data exports" },
+  { title: "Settings", icon: Settings, bg: "#E2EBD5", color: "#2D5A27", desc: "Preferences, years & roles" },
+];
+
 const navLinks = [
-  { label: 'Features', href: '/#features' },
-  { label: 'Why Security', href: '/#security' },
+  { label: 'Features', href: '/features' },
+  { label: 'Why Security', href: '/security' },
   { label: 'Mobile App', href: '/mobile' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'FAQs', href: '/#faq' },
@@ -19,7 +33,20 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleFeatureClick = (e: React.MouseEvent, featureTitle: string, index: number) => {
+    if (pathname === '/' || pathname === '/#features' || pathname === '' || pathname === '/features') {
+      e.preventDefault();
+      window.dispatchEvent(
+        new CustomEvent('select-erp-feature', { detail: { index } })
+      );
+      setIsOpen(false);
+    } else {
+      setIsOpen(false);
+    }
+  };
 
   /* scroll shadow */
   useEffect(() => {
@@ -90,10 +117,10 @@ export default function Header() {
 
             {/* Right: contact + search/heart + login */}
             <div className="flex items-center gap-5 text-[12px] font-semibold tracking-wide text-[#1C1C1C]">
-              <a href="tel:+919876543210"
+              <a href="tel:+918928567312"
                 className="inline-flex items-center gap-1.5 hover:text-[#2D5A27] transition-colors">
                 <Phone className="w-[13px] h-[13px] text-[#2D5A27]" strokeWidth={2.2} />
-                +91 98765 43210
+                +91 89285 67312
               </a>
               <a href="mailto:info@apanacampus.com"
                 className="inline-flex items-center gap-1.5 hover:text-[#2D5A27] transition-colors">
@@ -150,6 +177,77 @@ export default function Header() {
             aria-label="Main navigation">
             {navLinks.map(({ label, href }) => {
               const isActive = pathname === href || pathname === href.replace('/#', '/#');
+              
+              if (label === 'Features') {
+                return (
+                  <div key={label} className="relative group py-4">
+                    {/* Header trigger button */}
+                    <button
+                      className={`
+                        flex items-center gap-1
+                        relative text-[13.5px] font-bold tracking-[1.5px] uppercase
+                        transition-colors duration-200
+                        after:content-[''] after:absolute after:bottom-[-4px] after:left-0
+                        after:w-full after:h-[2px] after:bg-[#2D5A27]
+                        after:scale-x-0 after:origin-left
+                        after:transition-transform after:duration-300
+                        group-hover:text-[#2D5A27] group-hover:after:scale-x-100
+                        ${isActive
+                          ? 'text-[#2D5A27] after:scale-x-100'
+                          : 'text-[#1C1C1C]'
+                        }
+                      `}
+                    >
+                      {label}
+                      <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" />
+                    </button>
+
+                    {/* Premium Dropdown Card */}
+                    <div className="
+                      absolute top-[100%] left-1/2 -translate-x-1/2 mt-1
+                      w-[760px] bg-[#FAF9F6]/98 backdrop-blur-xl
+                      border border-black/[0.06] rounded-2xl
+                      shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                      opacity-0 translate-y-2 pointer-events-none
+                      group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
+                      transition-all duration-300 ease-out z-50
+                      p-5 grid grid-cols-3 gap-3.5
+                    ">
+                      {erpFeatures.map((feat, index) => {
+                        const IconComponent = feat.icon;
+                        return (
+                          <Link
+                            key={feat.title}
+                            href={`/features?feature=${feat.title.toLowerCase()}`}
+                            onClick={(e) => handleFeatureClick(e, feat.title, index)}
+                            className="
+                              flex items-start gap-3 p-3 rounded-xl
+                              hover:bg-[#2D5A27]/5 border border-transparent hover:border-[#2D5A27]/10
+                              transition-all duration-200 group/item
+                            "
+                          >
+                            <div
+                              className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
+                              style={{ backgroundColor: `${feat.color}15`, color: feat.color }}
+                            >
+                              <IconComponent className="w-5 h-5 group-hover/item:scale-110 transition-transform" />
+                            </div>
+                            <div className="flex flex-col text-left">
+                              <span className="text-[13px] font-bold text-[#1C1C1C] group-hover/item:text-[#2D5A27] transition-colors">
+                                {feat.title}
+                              </span>
+                              <span className="text-[10.5px] text-[#2B2927]/60 mt-0.5 leading-snug">
+                                {feat.desc}
+                              </span>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={href}
@@ -263,6 +361,59 @@ export default function Header() {
           aria-label="Mobile navigation">
           {navLinks.map(({ label, href }) => {
             const isActive = pathname === href;
+            
+            if (label === 'Features') {
+              return (
+                <div key={label} className="flex flex-col">
+                  <button
+                    onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
+                    className="
+                      flex items-center justify-between py-3 px-3 rounded-lg
+                      text-[13px] font-bold uppercase tracking-[1.5px]
+                      text-[#1C1C1C] hover:text-[#2D5A27] hover:bg-black/5
+                      transition-all duration-150
+                    "
+                  >
+                    <span>{label}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileFeaturesOpen ? 'rotate-180 text-[#2D5A27]' : 'text-black/40'}`} />
+                  </button>
+                  
+                  {/* Collapsible list of individual features */}
+                  <div className={`
+                    overflow-hidden transition-all duration-300 ease-in-out pl-4
+                    ${mobileFeaturesOpen ? 'max-h-[500px] opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0 pointer-events-none'}
+                  `}>
+                    <div className="grid grid-cols-2 gap-2 p-1.5 bg-black/[0.02] rounded-xl border border-black/[0.04]">
+                      {erpFeatures.map((feat, index) => {
+                        const IconComponent = feat.icon;
+                        return (
+                          <Link
+                            key={feat.title}
+                            href={`/features?feature=${feat.title.toLowerCase()}`}
+                            onClick={(e) => handleFeatureClick(e, feat.title, index)}
+                            className="
+                              flex items-center gap-2 p-2.5 rounded-lg
+                              hover:bg-[#2D5A27]/5 text-left transition-all duration-150
+                            "
+                          >
+                            <div
+                              className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
+                              style={{ backgroundColor: `${feat.color}15`, color: feat.color }}
+                            >
+                              <IconComponent className="w-4 h-4" />
+                            </div>
+                            <span className="text-[11px] font-bold text-[#1C1C1C] tracking-[0.5px]">
+                              {feat.title}
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={href}
@@ -313,10 +464,10 @@ export default function Header() {
           </Link>
 
           <div className="pt-3 flex flex-col gap-2 text-[12px] text-[#1C1C1C] font-semibold">
-            <a href="tel:+919876543210"
+            <a href="tel:+918928567312"
               className="flex items-center gap-2 hover:text-[#2D5A27] transition-colors">
               <Phone className="w-3.5 h-3.5 text-[#2D5A27]" strokeWidth={2} />
-              +91 98765 43210
+              +91 89285 67312
             </a>
             <a href="mailto:info@apanacampus.com"
               className="flex items-center gap-2 hover:text-[#2D5A27] transition-colors">

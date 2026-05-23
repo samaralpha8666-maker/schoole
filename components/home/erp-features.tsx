@@ -159,8 +159,8 @@ const erpFeatures = [
 ];
 
 // SVG Illustrations for each module
-const VisualIllustrations = {
-  students: (color) => (
+const VisualIllustrations: Record<string, (color: string) => React.ReactNode> = {
+  students: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="60" y="50" width="120" height="140" rx="12" fill={color} opacity="0.15" />
@@ -179,7 +179,7 @@ const VisualIllustrations = {
       <rect x="180" y="218" width="140" height="14" rx="7" fill={color} opacity="0.2" />
     </svg>
   ),
-  staff: (color) => (
+  staff: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       {[0, 1, 2].map(i => (
@@ -195,7 +195,7 @@ const VisualIllustrations = {
       <rect x="60" y="220" width="240" height="12" rx="6" fill={color} opacity="0.1" />
     </svg>
   ),
-  academic: (color) => (
+  academic: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="60" y="55" width="280" height="40" rx="10" fill={color} opacity="0.2" />
@@ -211,7 +211,7 @@ const VisualIllustrations = {
       ))}
     </svg>
   ),
-  fees: (color) => (
+  fees: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="60" y="50" width="130" height="100" rx="14" fill={color} opacity="0.15" />
@@ -228,7 +228,7 @@ const VisualIllustrations = {
       <rect x="60" y="225" width="180" height="12" rx="6" fill={color} opacity="0.08" />
     </svg>
   ),
-  timetable: (color) => (
+  timetable: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="60" y="55" width="280" height="30" rx="8" fill={color} opacity="0.2" />
@@ -243,7 +243,7 @@ const VisualIllustrations = {
       ))}
     </svg>
   ),
-  examination: (color) => (
+  examination: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="80" y="50" width="240" height="180" rx="16" fill={color} opacity="0.1" />
@@ -257,11 +257,6 @@ const VisualIllustrations = {
       ))}
     </svg>
   ),
-  // library: (color) => (
-  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-  //     {[0, 1, 2, 3, 4, 5, 6].map(i => (
-  //       <rect key={i} x={64 + i * 40} y="60" width="30" height="140" rx="6"
   //         fill={color} opacity={0.1 + (i % 3) * 0.08} />
   //     ))}
   //     <rect x="60" y="200" width="280" height="10" rx="5" fill={color} opacity="0.3" />
@@ -351,7 +346,7 @@ const VisualIllustrations = {
   //     ))}
   //   </svg>
   // ),
-  reports: (color) => (
+  reports: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <rect x="60" y="200" width="40" height="60" rx="6" fill={color} opacity="0.35" />
@@ -364,7 +359,7 @@ const VisualIllustrations = {
       <rect x="60" y="77" width="150" height="10" rx="5" fill={color} opacity="0.12" />
     </svg>
   ),
-  settings: (color) => (
+  settings: (color: string) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
       <circle cx="200" cy="150" r="60" fill={color} opacity="0.1" />
@@ -384,15 +379,82 @@ const VisualIllustrations = {
       <rect x="220" y="74" width="90" height="10" rx="5" fill={color} opacity="0.12" />
     </svg>
   ),
-  calendar: (color) => null,
+  calendar: (color: string) => null,
 };
 
 export default function ErpFeatures() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const itemRefs = useRef([]);
-  const scrollContainerRef = useRef(null);
-  const observerRef = useRef(null);
+  const itemRefs = useRef<any[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Handle custom event from Header to select a feature and scroll to the section
+  useEffect(() => {
+    const handleSelect = (e: any) => {
+      const idx = e.detail?.index;
+      if (idx !== undefined && idx >= 0 && idx < erpFeatures.length) {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setActiveIndex(idx);
+          setIsTransitioning(false);
+        }, 150);
+
+        // Smooth scroll to the main section
+        const section = document.getElementById('erp-features');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scroll to the specific item in the left list
+        setTimeout(() => {
+          const item = itemRefs.current[idx] as HTMLElement | undefined;
+          if (item) {
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 100);
+      }
+    };
+
+    window.addEventListener('select-erp-feature', handleSelect as any);
+    return () => {
+      window.removeEventListener('select-erp-feature', handleSelect as any);
+    };
+  }, []);
+
+  // Handle page load with search param (e.g. ?feature=fees)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const featParam = params.get('feature');
+      if (featParam) {
+        const idx = erpFeatures.findIndex(
+          (f) => f.title.toLowerCase() === featParam.toLowerCase()
+        );
+        if (idx !== -1) {
+          setIsTransitioning(true);
+          setTimeout(() => {
+            setActiveIndex(idx);
+            setIsTransitioning(false);
+          }, 150);
+
+          // Give Next.js layout and routing some time to complete
+          setTimeout(() => {
+            const section = document.getElementById('erp-features');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+            setTimeout(() => {
+              const item = itemRefs.current[idx] as HTMLElement | undefined;
+              if (item) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }
+            }, 300);
+          }, 400);
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const options = {
@@ -404,7 +466,7 @@ export default function ErpFeatures() {
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const idx = parseInt(entry.target.dataset.index);
+          const idx = parseInt((entry.target as HTMLElement).dataset.index || '');
           if (!isNaN(idx)) {
             setIsTransitioning(true);
             setTimeout(() => {
@@ -417,7 +479,7 @@ export default function ErpFeatures() {
     }, options);
 
     itemRefs.current.forEach((el) => {
-      if (el) observerRef.current.observe(el);
+      if (el && observerRef.current) observerRef.current.observe(el);
     });
 
     return () => {
@@ -426,7 +488,7 @@ export default function ErpFeatures() {
   }, []);
 
   const activeFeature = erpFeatures[activeIndex] || erpFeatures[0] || { title: '', visual: '', subItems: [], description: '' };
-  const IllustrationComponent = activeFeature.visual ? VisualIllustrations[activeFeature.visual] : null;
+  const IllustrationComponent = activeFeature.visual ? (VisualIllustrations as any)[activeFeature.visual] : null;
   const isScreenshotFeature = ['students', 'staff', 'academic', 'fees', 'timetable', 'examination', 'reports', 'settings', 'calendar'].includes(activeFeature.visual);
 
   // Right visual panel theme overrides (always matched with Admin Purple screenshots)
@@ -482,7 +544,7 @@ export default function ErpFeatures() {
               return (
                 <div
                   key={idx}
-                  ref={(el) => (itemRefs.current[idx] = el)}
+                  ref={(el) => { itemRefs.current[idx] = el; }}
                   data-index={idx}
                   onClick={() => {
                     setIsTransitioning(true);

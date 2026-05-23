@@ -20,8 +20,7 @@ export default function HomePage() {
       {/* 2.5. 14 Comprehensive ERP Core Modules */}
       <ErpFeatures />
 
-      {/* 3. Interactive Multi-Role Portal Tabs Showcase */}
-      <PortalTabs />
+     
 
       {/* 4. Integrated Stakeholder Mobile App Ecosystem */}
       <MobileSection />
@@ -29,8 +28,7 @@ export default function HomePage() {
       {/* 5. Schema Isolation PostgreSQL Technical Feature Details */}
       <SchemaIsolation />
 
-      {/* 6. Interactive ROI Cost Savings Calculator */}
-      <RoiCalculator />
+  
 
       {/* 7. Flexible Tiered Pricing Licensing Plans */}
       <PricingSection />
