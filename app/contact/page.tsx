@@ -8,7 +8,7 @@ import {
   ShieldCheck, HelpCircle, 
   ChevronRight, Loader2,
   CheckCircle2, Building, KeyRound,
-  FileText, MessageSquareQuote, ArrowLeftRight
+  FileText
 } from 'lucide-react';
 
 function ContactContent() {
