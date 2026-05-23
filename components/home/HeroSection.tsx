@@ -70,81 +70,25 @@ export default function HeroSection() {
               />
             </div>
           </div>
+          {/* ── 2. SINGLE STRAIGHT IPHONE 16 PRO MOCKUP (Clean, High-Fidelity & Responsive) ── */}
+          <div className="absolute right-[-15px] sm:right-[-25px] bottom-[-30px] w-[130px] sm:w-[180px] aspect-[393/852] rounded-[36px] bg-[#0c0c0d] p-[4px] sm:p-[5px] ring-1 ring-white/10 ring-inset shadow-[0_30px_60px_rgba(0,0,0,0.45)] border-[1.5px] border-[#2b2b2c] z-20 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
+            {/* Ultra-thin Screen Frame */}
+            <div className="relative w-full h-full rounded-[31px] overflow-hidden bg-white">
+              {/* Dynamic Island */}
+              <div className="absolute top-[8px] sm:top-[10px] left-1/2 -translate-x-1/2 w-[52px] sm:w-[72px] h-[11px] sm:h-[14px] bg-black rounded-[6px] sm:rounded-[8px] z-30" />
 
-          {/* 2. Floating Mobile Phone Overlay (Sits elegantly on the right, overlapping browser mockup) */}
-          <div className="absolute right-[-15px] sm:right-[-25px] bottom-[-25px] w-[175px] aspect-[1/2] rounded-[24px] bg-[#1C1C1C] p-2 shadow-[0_25px_60px_rgba(28,28,28,0.18)] flex flex-col border border-[#2D5A27]/25 z-10 transition-transform duration-500 hover:translate-y-[-5px]">
-            {/* Dynamic Island Speaker Notch */}
-            <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-10 h-3.5 bg-black rounded-full z-20 flex items-center justify-center">
-              <span className="w-1 h-1 rounded-full bg-white/10 mr-1" />
-              <span className="w-1.5 h-0.5 rounded-full bg-[#2D5A27]/60" />
-            </div>
-
-            {/* Screen inside themed strictly in primary green */}
-            <div className="flex-1 bg-[#2D5A27] rounded-[18px] p-3 pt-6 flex flex-col justify-between text-white overflow-hidden relative">
-
-              {/* Background gradient micro blur inside phone */}
-              <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white/5 blur-xl pointer-events-none" />
-
-              {/* Greeting inside mobile */}
-              <div className="space-y-0.5 shrink-0">
-                <div className="text-[6.5px] text-[#E2EBD5] font-bold tracking-wide uppercase">ApnaCampus App</div>
-                <div className="text-[9.5px] font-black leading-tight tracking-wide font-sans">Hi, Anoop Awasthi</div>
-                <div className="text-[6px] text-white/60 font-semibold">Good Morning !</div>
-              </div>
-
-              {/* Categories Grid (Matches user screenshot circles list) */}
-              <div className="my-2 shrink-0">
-                <span className="text-[4.5px] font-bold text-white/50 uppercase tracking-widest block mb-1">Teacher Portal</span>
-                <div className="grid grid-cols-4 gap-1">
-                  {[
-                    { label: 'Teacher Panel', glyph: '👨‍🏫' },
-                    { label: 'Assignments', glyph: '📝' },
-                    { label: 'Daily Stats', glyph: '📊' },
-                    { label: 'Messages', glyph: '💬' }
-                  ].map((cat, idx) => (
-                    <div key={idx} className="flex flex-col items-center text-center group cursor-pointer">
-                      <div className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center text-[9px] border border-white/5">
-                        {cat.glyph}
-                      </div>
-                      <span className="text-[3.8px] font-bold text-white/70 mt-1 truncate w-full leading-none">{cat.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quick Actions Grid (Matches metrics cards underneath in screenshot mobile screen) */}
-              <div className="bg-white rounded-xl p-2 text-[#1C1C1C] flex-1 flex flex-col justify-between my-1">
-                {/* Mini Search box in phone */}
-                <div className="h-3.5 bg-[#FAF9F6] border border-[#2D5A27]/10 rounded flex items-center px-1 text-[4.5px] text-black/35 font-bold mb-1.5">
-                  🔍 Search tools...
-                </div>
-
-                <div className="grid grid-cols-2 gap-1 flex-1 content-center">
-                  {[
-                    { label: 'Student Attendance', desc: '98% Daily Average' },
-                    { label: 'Marks Entry', desc: 'Term 1 Grading' },
-                    { label: 'Staff Leave', desc: '1 Pending Approval' },
-                    { label: 'Fee Portal', desc: 'Collected ₹1.2L today' }
-                  ].map((act, idx) => (
-                    <div key={idx} className="p-1 rounded bg-[#FAF9F6] border border-[#2D5A27]/5 flex flex-col justify-center hover:bg-[#E2EBD5]/20 transition-all cursor-pointer">
-                      <span className="text-[4.8px] font-black text-[#2D5A27] truncate leading-none">{act.label}</span>
-                      <span className="text-[3.5px] text-black/40 font-bold mt-0.5 truncate leading-none">{act.desc}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom Mobile Tab Bar */}
-              <div className="flex justify-between items-center pt-1.5 border-t border-white/10 text-[5px] font-black tracking-widest uppercase text-white/50 shrink-0">
-                <span className="text-[#E2EBD5] flex flex-col items-center gap-0.5 cursor-pointer">
-                  <span>●</span> HOME
-                </span>
-                <span className="hover:text-white transition-colors cursor-pointer">STATS</span>
-                <span className="hover:text-white transition-colors cursor-pointer">NOTIFS</span>
-              </div>
-
+              {/* Screen Content - Dashboard */}
+              <Image
+                src="/mobile-dashboard.jpg"
+                alt="Teacher ERP Attendance & Overview Dashboard"
+                fill
+                priority
+                unoptimized
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.01]"
+              />
             </div>
           </div>
+
 
           {/* 3. Floating Student Profile Badge (Overlaps the top-left of browser mockup exactly as seen in screenshot) */}
           <div className="absolute left-[-15px] sm:left-[-25px] top-[20px] bg-white border border-[#2D5A27]/15 rounded-[16px] p-2.5 sm:p-3 shadow-[0_12px_35px_rgba(45,90,39,0.08)] w-[140px] flex items-center gap-2.5 z-15 transition-all duration-300 hover:scale-105 hover:shadow-[0_18px_45px_rgba(45,90,39,0.12)]">
@@ -178,28 +122,59 @@ export default function HeroSection() {
 
         {/* Brand Name & Headline */}
         <div className="space-y-2">
-          <div className="font-serif text-[2.5rem] md:text-[3.2rem] font-bold leading-none text-[#1C1C1C] tracking-tight">
-            CAMPUSCARE <span className="text-[#2D5A27] font-serif">10X</span>
-          </div>
+          <h1 className="font-serif text-[2.5rem] md:text-[3.2rem] font-bold leading-none text-[#1C1C1C] tracking-tight" id="hero-heading">
+            APANACAMPUS <span className="text-[#2D5A27] font-serif">10X</span>
+          </h1>
           <p className="text-[13.5px] tracking-[1.8px] uppercase font-black text-[#2D5A27]">
             Premium School & College Management ERP
           </p>
         </div>
 
         {/* Bullets List (Exactly matches the bullet items in user screenshot) */}
-        <ul className="space-y-4 text-[14.5px] md:text-[16px] text-[#1C1C1C]/90 font-bold font-sans">
+        <ul className="space-y-4 text-[14.5px] md:text-[16px] text-[#1C1C1C]/90 font-semibold font-sans">
           <li className="flex items-start gap-3">
-            {/* Square/Round marker themed strictly in primary green */}
-            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5" aria-hidden="true">✔</span>
-            <span>Setting &ldquo;Clear Vision&rdquo; for Schools</span>
+            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+              ✔
+            </span>
+            <span>
+              <span className="text-[#2D5A27] font-bold">3 Months Free Trial</span> with full access to all premium features for Schools & Colleges.
+            </span>
           </li>
+
           <li className="flex items-start gap-3">
-            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5" aria-hidden="true">✔</span>
-            <span>State of the Art Dashboard & Analytics</span>
+            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+              ✔
+            </span>
+            <span>
+              Our expert team will <span className="text-[#2D5A27] font-bold">fill and manage all school & college data</span> properly in the system.
+            </span>
           </li>
+
           <li className="flex items-start gap-3">
-            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5" aria-hidden="true">✔</span>
-            <span>A Trusted Partner for Schools</span>
+            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+              ✔
+            </span>
+            <span>
+              Complete management solution for <span className="text-[#2D5A27] font-bold">Schools and Colleges</span> with smooth and organized workflow.
+            </span>
+          </li>
+
+          <li className="flex items-start gap-3">
+            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+              ✔
+            </span>
+            <span>
+              <span className="text-[#2D5A27] font-bold">24×7 Support Team</span> available anytime for help, guidance, and solving doubts.
+            </span>
+          </li>
+
+          <li className="flex items-start gap-3">
+            <span className="w-5 h-5 rounded-md bg-[#2D5A27] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+              ✔
+            </span>
+            <span>
+              We provide <span className="text-[#2D5A27] font-bold">complete training</span> to staff and management for easy system usage.
+            </span>
           </li>
         </ul>
 
@@ -220,41 +195,7 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        {/* Technical Partners list at the bottom (Styled to match the footer rows in original screenshot) */}
-        <div className="pt-7 border-t border-[#2D5A27]/15 space-y-4">
-          <span className="text-[11.5px] font-black tracking-[2px] uppercase text-black/40 block">Technical Partners</span>
 
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8">
-            {/* Zoho */}
-            <div className="flex items-center gap-1.5 font-black text-[#1C1C1C] text-[13px] tracking-tight hover:text-[#2D5A27] transition-colors cursor-default">
-              <svg className="w-4 h-4 text-[#2D5A27]" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="2" y="2" width="9" height="9" rx="1.5" />
-                <rect x="13" y="2" width="9" height="9" rx="1.5" />
-                <rect x="2" y="13" width="9" height="9" rx="1.5" />
-                <rect x="13" y="13" width="9" height="9" rx="1.5" />
-              </svg>
-              ZOHO
-            </div>
-
-            {/* Tata Tele Business Services */}
-            <div className="flex items-center gap-1 hover:text-[#2D5A27] transition-colors cursor-default">
-              <span className="text-[#1C1C1C] font-extrabold text-[11px] tracking-[2.5px]">TATA TELE</span>
-              <span className="text-[7.5px] bg-[#2D5A27]/10 text-[#2D5A27] px-1 py-0.5 rounded font-black tracking-wide leading-none uppercase">BUSINESS</span>
-            </div>
-
-            {/* AWS */}
-            <div className="flex items-center gap-1 font-extrabold text-[#1C1C1C] text-[13.5px] hover:text-[#2D5A27] transition-colors cursor-default font-serif">
-              aws
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2D5A27]" />
-            </div>
-
-            {/* Adobe */}
-            <div className="flex items-center gap-1 font-black text-[#1C1C1C] text-[13px] tracking-tighter hover:text-[#2D5A27] transition-colors cursor-default">
-              <svg className="w-3.5 h-3.5 text-[#2D5A27]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h7.6l2.1-4.8h4.5l2.2 4.8H22L12 2zm1.6 11.2h-3.2L12 6.5l1.6 6.7z" /></svg>
-              Adobe
-            </div>
-          </div>
-        </div>
 
       </div>
 

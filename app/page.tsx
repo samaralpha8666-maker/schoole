@@ -5,7 +5,7 @@ import HeroSection from '@/components/home/HeroSection';
 import TickerSection from '@/components/home/ticker-section';
 import ErpFeatures from '@/components/home/erp-features';
 import { PortalTabs } from '@/components/home/portal-tabs';
-import HowItWorks from '@/components/home/how-it-works';
+import MobileSection from '@/components/home/mobile-section';
 import { SchemaIsolation } from '@/components/home/schema-isolation';
 import { RoiCalculator } from '@/components/home/roi-calculator';
 import PricingSection from '@/components/home/pricing-section';
@@ -23,8 +23,8 @@ export default function HomePage() {
       {/* 3. Interactive Multi-Role Portal Tabs Showcase */}
       <PortalTabs />
 
-      {/* 4. Onboarding & Provisioning Architecture (3-Step) */}
-      <HowItWorks />
+      {/* 4. Integrated Stakeholder Mobile App Ecosystem */}
+      <MobileSection />
 
       {/* 5. Schema Isolation PostgreSQL Technical Feature Details */}
       <SchemaIsolation />

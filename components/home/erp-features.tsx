@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import {
   GraduationCap,
   Users,
@@ -16,6 +17,7 @@ import {
   Wallet,
   BarChart3,
   Settings,
+  CalendarDays,
 } from 'lucide-react';
 
 const erpFeatures = [
@@ -33,8 +35,8 @@ const erpFeatures = [
     icon: Users,
     subItems: ["Teachers", "Non-Teaching", "Recruitment", "Attendance", "Leave", "Performance"],
     description: "Complete HR management for all staff members — from recruitment to performance reviews and leave management.",
-    color: "#1A4A6B",
-    bg: "#D5E4EB",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "staff",
   },
   {
@@ -42,8 +44,8 @@ const erpFeatures = [
     icon: BookOpen,
     subItems: ["Classes", "Subjects", "Mapping", "Calendar", "Syllabus", "Lessons"],
     description: "Structure your entire academic framework — classes, subjects, lesson plans and the full academic calendar.",
-    color: "#6B3A1A",
-    bg: "#EBD5C5",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "academic",
   },
   {
@@ -51,8 +53,8 @@ const erpFeatures = [
     icon: Coins,
     subItems: ["Structure", "Collection", "Tracking", "Receipts", "Concessions", "Reports"],
     description: "Automate fee collection, generate receipts, apply concessions and track outstanding payments effortlessly.",
-    color: "#1A6B4A",
-    bg: "#C5EBD8",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "fees",
   },
   {
@@ -60,80 +62,89 @@ const erpFeatures = [
     icon: Calendar,
     subItems: ["Class/Teacher Schedules", "Resources", "Substitution", "Periods"],
     description: "Build conflict-free timetables for classes and teachers with automated substitution management.",
-    color: "#4A1A6B",
-    bg: "#D8C5EB",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "timetable",
+  },
+  {
+    title: "Calendar",
+    icon: CalendarDays,
+    subItems: ["Events", "Meetings", "Holidays", "Task Reminders"],
+    description: "Coordinate school-wide activities — schedule and manage public events, administrative meetings, holiday schedules, and time-bound task reminders in real-time.",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
+    visual: "calendar",
   },
   {
     title: "Examination",
     icon: ClipboardList,
     subItems: ["Exams", "Marks", "Report Cards", "Results", "Online Exams"],
     description: "Conduct exams, record marks, generate report cards and publish results — online and offline.",
-    color: "#6B1A1A",
-    bg: "#EBC5C5",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "examination",
   },
-  {
-    title: "Library",
-    icon: BookMarked,
-    subItems: ["Books", "Issue/Return", "Fines", "Digital Resources"],
-    description: "Digitize your library — catalog books, manage issue/return cycles, collect fines and provide digital resources.",
-    color: "#1A5A6B",
-    bg: "#C5E2EB",
-    visual: "library",
-  },
-  {
-    title: "Transport",
-    icon: Bus,
-    subItems: ["Routes", "Vehicles", "Drivers", "Allocation", "Fees"],
-    description: "Manage routes, vehicles and drivers. Allocate students to buses and track transport fee collections.",
-    color: "#6B5A1A",
-    bg: "#EBE2C5",
-    visual: "transport",
-  },
-  {
-    title: "Hostel",
-    icon: Home,
-    subItems: ["Rooms", "Attendance", "Mess", "Fees"],
-    description: "Allocate rooms, track hostel attendance, manage mess schedules and collect hostel fees seamlessly.",
-    color: "#2D5A27",
-    bg: "#D5EBC5",
-    visual: "hostel",
-  },
-  {
-    title: "Communication",
-    icon: MessageSquare,
-    subItems: ["Announcements", "Notifications", "Messaging", "Notice Board"],
-    description: "Keep everyone informed with instant announcements, push notifications and a digital notice board.",
-    color: "#1A3D6B",
-    bg: "#C5D5EB",
-    visual: "communication",
-  },
-  {
-    title: "Inventory",
-    icon: Package,
-    subItems: ["Assets", "Supplies", "Maintenance", "Vendors"],
-    description: "Track school assets, manage supply stocks, schedule maintenance and maintain vendor records.",
-    color: "#3D1A6B",
-    bg: "#D0C5EB",
-    visual: "inventory",
-  },
-  {
-    title: "HR & Payroll",
-    icon: Wallet,
-    subItems: ["Salary", "Processing", "Tax", "Payslips", "Integration"],
-    description: "Process monthly salaries, compute taxes, generate payslips and integrate with accounting systems.",
-    color: "#1A6B1A",
-    bg: "#C5EBC5",
-    visual: "payroll",
-  },
+  // {
+  //   title: "Library",
+  //   icon: BookMarked,
+  //   subItems: ["Books", "Issue/Return", "Fines", "Digital Resources"],
+  //   description: "Digitize your library — catalog books, manage issue/return cycles, collect fines and provide digital resources.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "library",
+  // },
+  // {
+  //   title: "Transport",
+  //   icon: Bus,
+  //   subItems: ["Routes", "Vehicles", "Drivers", "Allocation", "Fees"],
+  //   description: "Manage routes, vehicles and drivers. Allocate students to buses and track transport fee collections.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "transport",
+  // },
+  // {
+  //   title: "Hostel",
+  //   icon: Home,
+  //   subItems: ["Rooms", "Attendance", "Mess", "Fees"],
+  //   description: "Allocate rooms, track hostel attendance, manage mess schedules and collect hostel fees seamlessly.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "hostel",
+  // },
+  // {
+  //   title: "Communication",
+  //   icon: MessageSquare,
+  //   subItems: ["Announcements", "Notifications", "Messaging", "Notice Board"],
+  //   description: "Keep everyone informed with instant announcements, push notifications and a digital notice board.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "communication",
+  // },
+  // {
+  //   title: "Inventory",
+  //   icon: Package,
+  //   subItems: ["Assets", "Supplies", "Maintenance", "Vendors"],
+  //   description: "Track school assets, manage supply stocks, schedule maintenance and maintain vendor records.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "inventory",
+  // },
+  // {
+  //   title: "HR & Payroll",
+  //   icon: Wallet,
+  //   subItems: ["Salary", "Processing", "Tax", "Payslips", "Integration"],
+  //   description: "Process monthly salaries, compute taxes, generate payslips and integrate with accounting systems.",
+  //   color: "#2D5A27",
+  //   bg: "#E2EBD5",
+  //   visual: "payroll",
+  // },
   {
     title: "Reports",
     icon: BarChart3,
     subItems: ["Student", "Attendance", "Financial", "Staff", "Custom", "Export"],
     description: "Generate actionable reports across every module — export as PDF, Excel or share directly.",
-    color: "#6B3D1A",
-    bg: "#EBD0C5",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "reports",
   },
   {
@@ -141,8 +152,8 @@ const erpFeatures = [
     icon: Settings,
     subItems: ["Profile", "Academic Year", "Roles", "Preferences", "Backup"],
     description: "Configure academic years, define roles and permissions, manage preferences and schedule backups.",
-    color: "#1A1A6B",
-    bg: "#C5C5EB",
+    color: "#2D5A27",
+    bg: "#E2EBD5",
     visual: "settings",
   },
 ];
@@ -246,100 +257,100 @@ const VisualIllustrations = {
       ))}
     </svg>
   ),
-  library: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      {[0, 1, 2, 3, 4, 5, 6].map(i => (
-        <rect key={i} x={64 + i * 40} y="60" width="30" height="140" rx="6"
-          fill={color} opacity={0.1 + (i % 3) * 0.08} />
-      ))}
-      <rect x="60" y="200" width="280" height="10" rx="5" fill={color} opacity="0.3" />
-      <rect x="60" y="218" width="200" height="8" rx="4" fill={color} opacity="0.15" />
-      <rect x="270" y="218" width="70" height="8" rx="4" fill={color} opacity="0.25" />
-    </svg>
-  ),
-  transport: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      <rect x="60" y="120" width="280" height="80" rx="16" fill={color} opacity="0.15" />
-      <rect x="60" y="100" width="200" height="50" rx="12" fill={color} opacity="0.2" />
-      <circle cx="110" cy="210" r="18" fill={color} opacity="0.35" />
-      <circle cx="110" cy="210" r="8" fill="white" opacity="0.6" />
-      <circle cx="290" cy="210" r="18" fill={color} opacity="0.35" />
-      <circle cx="290" cy="210" r="8" fill="white" opacity="0.6" />
-      {[0, 1, 2, 3].map(i => (
-        <rect key={i} x={80 + i * 60} y="125" width="40" height="30" rx="6" fill={color} opacity="0.2" />
-      ))}
-      <rect x="60" y="60" width="120" height="12" rx="6" fill={color} opacity="0.2" />
-      <rect x="200" y="60" width="140" height="12" rx="6" fill={color} opacity="0.15" />
-      <rect x="60" y="82" width="80" height="10" rx="5" fill={color} opacity="0.15" />
-    </svg>
-  ),
-  hostel: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      <rect x="100" y="50" width="200" height="20" rx="6" fill={color} opacity="0.3" />
-      <polygon points="80,80 200,50 320,80" fill={color} opacity="0.2" />
-      <rect x="80" y="80" width="240" height="150" rx="0" fill={color} opacity="0.1" />
-      {[0, 1, 2].map(row => (
-        [0, 1, 2, 3].map(col => (
-          <rect key={`${row}-${col}`} x={95 + col * 56} y={95 + row * 44} width="36" height="28" rx="4"
-            fill={color} opacity={(row + col) % 2 === 0 ? 0.25 : 0.12} />
-        ))
-      ))}
-    </svg>
-  ),
-  communication: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      <rect x="60" y="60" width="180" height="50" rx="14" fill={color} opacity="0.2" />
-      <rect x="75" y="74" width="120" height="10" rx="5" fill={color} opacity="0.4" />
-      <rect x="75" y="90" width="90" height="8" rx="4" fill={color} opacity="0.25" />
-      <path d="M60 110 L85 110" stroke={color} strokeWidth="2" opacity="0.3" />
-      <rect x="160" y="130" width="180" height="50" rx="14" fill={color} opacity="0.15" />
-      <rect x="175" y="144" width="120" height="10" rx="5" fill={color} opacity="0.3" />
-      <rect x="175" y="160" width="90" height="8" rx="4" fill={color} opacity="0.2" />
-      <rect x="60" y="200" width="150" height="50" rx="14" fill={color} opacity="0.2" />
-      <rect x="75" y="214" width="100" height="10" rx="5" fill={color} opacity="0.35" />
-      <rect x="75" y="230" width="70" height="8" rx="4" fill={color} opacity="0.2" />
-    </svg>
-  ),
-  inventory: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      {[0, 1, 2].map(row => (
-        [0, 1, 2].map(col => (
-          <rect key={`${row}-${col}`} x={65 + col * 100} y={55 + row * 70} width="80" height="55" rx="12"
-            fill={color} opacity={0.08 + (row * col) * 0.03} />
-        ))
-      ))}
-      {[0, 1, 2].map(row => (
-        [0, 1, 2].map(col => (
-          <g key={`icon-${row}-${col}`}>
-            <rect x={80 + col * 100} y={68 + row * 70} width="50" height="8" rx="4" fill={color} opacity="0.3" />
-            <rect x={80 + col * 100} y={82 + row * 70} width="35" height="6" rx="3" fill={color} opacity="0.2" />
-          </g>
-        ))
-      ))}
-    </svg>
-  ),
-  payroll: (color) => (
-    <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
-      <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
-      <rect x="60" y="55" width="280" height="55" rx="12" fill={color} opacity="0.15" />
-      <rect x="80" y="68" width="80" height="12" rx="6" fill={color} opacity="0.4" />
-      <rect x="80" y="86" width="60" height="10" rx="5" fill={color} opacity="0.25" />
-      <rect x="280" y="68" width="40" height="24" rx="8" fill={color} opacity="0.35" />
-      {[0, 1, 2, 3].map(i => (
-        <g key={i}>
-          <rect x="60" y={125 + i * 32} width="280" height="24" rx="6" fill={color} opacity={i % 2 === 0 ? 0.06 : 0.03} />
-          <rect x="75" y={132 + i * 32} width="100" height="10" rx="5" fill={color} opacity="0.2" />
-          <rect x="200" y={132 + i * 32} width="60" height="10" rx="5" fill={color} opacity="0.2" />
-          <rect x="295" y={132 + i * 32} width="30" height="10" rx="5" fill={color} opacity="0.3" />
-        </g>
-      ))}
-    </svg>
-  ),
+  // library: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     {[0, 1, 2, 3, 4, 5, 6].map(i => (
+  //       <rect key={i} x={64 + i * 40} y="60" width="30" height="140" rx="6"
+  //         fill={color} opacity={0.1 + (i % 3) * 0.08} />
+  //     ))}
+  //     <rect x="60" y="200" width="280" height="10" rx="5" fill={color} opacity="0.3" />
+  //     <rect x="60" y="218" width="200" height="8" rx="4" fill={color} opacity="0.15" />
+  //     <rect x="270" y="218" width="70" height="8" rx="4" fill={color} opacity="0.25" />
+  //   </svg>
+  // ),
+  // transport: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     <rect x="60" y="120" width="280" height="80" rx="16" fill={color} opacity="0.15" />
+  //     <rect x="60" y="100" width="200" height="50" rx="12" fill={color} opacity="0.2" />
+  //     <circle cx="110" cy="210" r="18" fill={color} opacity="0.35" />
+  //     <circle cx="110" cy="210" r="8" fill="white" opacity="0.6" />
+  //     <circle cx="290" cy="210" r="18" fill={color} opacity="0.35" />
+  //     <circle cx="290" cy="210" r="8" fill="white" opacity="0.6" />
+  //     {[0, 1, 2, 3].map(i => (
+  //       <rect key={i} x={80 + i * 60} y="125" width="40" height="30" rx="6" fill={color} opacity="0.2" />
+  //     ))}
+  //     <rect x="60" y="60" width="120" height="12" rx="6" fill={color} opacity="0.2" />
+  //     <rect x="200" y="60" width="140" height="12" rx="6" fill={color} opacity="0.15" />
+  //     <rect x="60" y="82" width="80" height="10" rx="5" fill={color} opacity="0.15" />
+  //   </svg>
+  // ),
+  // hostel: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     <rect x="100" y="50" width="200" height="20" rx="6" fill={color} opacity="0.3" />
+  //     <polygon points="80,80 200,50 320,80" fill={color} opacity="0.2" />
+  //     <rect x="80" y="80" width="240" height="150" rx="0" fill={color} opacity="0.1" />
+  //     {[0, 1, 2].map(row => (
+  //       [0, 1, 2, 3].map(col => (
+  //         <rect key={`${row}-${col}`} x={95 + col * 56} y={95 + row * 44} width="36" height="28" rx="4"
+  //           fill={color} opacity={(row + col) % 2 === 0 ? 0.25 : 0.12} />
+  //       ))
+  //     ))}
+  //   </svg>
+  // ),
+  // communication: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     <rect x="60" y="60" width="180" height="50" rx="14" fill={color} opacity="0.2" />
+  //     <rect x="75" y="74" width="120" height="10" rx="5" fill={color} opacity="0.4" />
+  //     <rect x="75" y="90" width="90" height="8" rx="4" fill={color} opacity="0.25" />
+  //     <path d="M60 110 L85 110" stroke={color} strokeWidth="2" opacity="0.3" />
+  //     <rect x="160" y="130" width="180" height="50" rx="14" fill={color} opacity="0.15" />
+  //     <rect x="175" y="144" width="120" height="10" rx="5" fill={color} opacity="0.3" />
+  //     <rect x="175" y="160" width="90" height="8" rx="4" fill={color} opacity="0.2" />
+  //     <rect x="60" y="200" width="150" height="50" rx="14" fill={color} opacity="0.2" />
+  //     <rect x="75" y="214" width="100" height="10" rx="5" fill={color} opacity="0.35" />
+  //     <rect x="75" y="230" width="70" height="8" rx="4" fill={color} opacity="0.2" />
+  //   </svg>
+  // ),
+  // inventory: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     {[0, 1, 2].map(row => (
+  //       [0, 1, 2].map(col => (
+  //         <rect key={`${row}-${col}`} x={65 + col * 100} y={55 + row * 70} width="80" height="55" rx="12"
+  //           fill={color} opacity={0.08 + (row * col) * 0.03} />
+  //       ))
+  //     ))}
+  //     {[0, 1, 2].map(row => (
+  //       [0, 1, 2].map(col => (
+  //         <g key={`icon-${row}-${col}`}>
+  //           <rect x={80 + col * 100} y={68 + row * 70} width="50" height="8" rx="4" fill={color} opacity="0.3" />
+  //           <rect x={80 + col * 100} y={82 + row * 70} width="35" height="6" rx="3" fill={color} opacity="0.2" />
+  //         </g>
+  //       ))
+  //     ))}
+  //   </svg>
+  // ),
+  // payroll: (color) => (
+  //   <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+  //     <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
+  //     <rect x="60" y="55" width="280" height="55" rx="12" fill={color} opacity="0.15" />
+  //     <rect x="80" y="68" width="80" height="12" rx="6" fill={color} opacity="0.4" />
+  //     <rect x="80" y="86" width="60" height="10" rx="5" fill={color} opacity="0.25" />
+  //     <rect x="280" y="68" width="40" height="24" rx="8" fill={color} opacity="0.35" />
+  //     {[0, 1, 2, 3].map(i => (
+  //       <g key={i}>
+  //         <rect x="60" y={125 + i * 32} width="280" height="24" rx="6" fill={color} opacity={i % 2 === 0 ? 0.06 : 0.03} />
+  //         <rect x="75" y={132 + i * 32} width="100" height="10" rx="5" fill={color} opacity="0.2" />
+  //         <rect x="200" y={132 + i * 32} width="60" height="10" rx="5" fill={color} opacity="0.2" />
+  //         <rect x="295" y={132 + i * 32} width="30" height="10" rx="5" fill={color} opacity="0.3" />
+  //       </g>
+  //     ))}
+  //   </svg>
+  // ),
   reports: (color) => (
     <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
       <rect x="40" y="30" width="320" height="240" rx="20" fill="white" opacity="0.6" />
@@ -373,6 +384,7 @@ const VisualIllustrations = {
       <rect x="220" y="74" width="90" height="10" rx="5" fill={color} opacity="0.12" />
     </svg>
   ),
+  calendar: (color) => null,
 };
 
 export default function ErpFeatures() {
@@ -413,8 +425,13 @@ export default function ErpFeatures() {
     };
   }, []);
 
-  const activeFeature = erpFeatures[activeIndex];
-  const IllustrationComponent = VisualIllustrations[activeFeature.visual];
+  const activeFeature = erpFeatures[activeIndex] || erpFeatures[0] || { title: '', visual: '', subItems: [], description: '' };
+  const IllustrationComponent = activeFeature.visual ? VisualIllustrations[activeFeature.visual] : null;
+  const isScreenshotFeature = ['students', 'staff', 'academic', 'fees', 'timetable', 'examination', 'reports', 'settings', 'calendar'].includes(activeFeature.visual);
+
+  // Right visual panel theme overrides (always matched with Admin Purple screenshots)
+  const panelColor = '#4F46E5';
+  const panelBg = '#EEF2FF';
 
   return (
     <section
@@ -449,11 +466,11 @@ export default function ErpFeatures() {
         {/* Main Scroll Layout */}
         <div className="flex gap-0 relative items-start">
 
-          {/* LEFT: Feature Scroller — 40% */}
+          {/* LEFT: Feature Scroller — 32% */}
           <div
             ref={scrollContainerRef}
-            className="w-[40%] flex-shrink-0 pr-8 space-y-3"
-            style={{ maxHeight: '80vh', overflowY: 'auto', scrollbarWidth: 'none' }}
+            className="w-[32%] flex-shrink-0 pr-8 space-y-3"
+            style={{ maxHeight: '85vh', overflowY: 'auto', scrollbarWidth: 'none' }}
           >
             <style>{`
               div::-webkit-scrollbar { display: none; }
@@ -589,20 +606,20 @@ export default function ErpFeatures() {
             })}
           </div>
 
-          {/* RIGHT: Sticky Visual Panel — 60% */}
+          {/* RIGHT: Sticky Visual Panel — 68% */}
           <div
-            className="w-[60%] flex-shrink-0"
+            className="w-[68%] flex-shrink-0"
             style={{ position: 'sticky', top: '100px', height: 'fit-content' }}
           >
             <div
               style={{
                 borderRadius: '28px',
                 overflow: 'hidden',
-                background: `linear-gradient(135deg, ${activeFeature.bg}90 0%, ${activeFeature.bg}40 100%)`,
-                border: `1.5px solid ${activeFeature.color}20`,
-                boxShadow: `0 20px 60px ${activeFeature.color}18, 0 4px 16px ${activeFeature.color}10`,
+                background: `linear-gradient(135deg, ${panelBg}90 0%, ${panelBg}40 100%)`,
+                border: `1.5px solid ${panelColor}20`,
+                boxShadow: `0 20px 60px rgba(79,70,229,0.12), 0 4px 16px rgba(79,70,229,0.08)`,
                 transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                minHeight: '480px',
+                minHeight: '540px',
                 display: 'flex',
                 flexDirection: 'column',
               }}
@@ -611,11 +628,11 @@ export default function ErpFeatures() {
               <div
                 style={{
                   padding: '20px 28px 16px',
-                  borderBottom: `1px solid ${activeFeature.color}15`,
+                  borderBottom: `1px solid ${panelColor}15`,
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  background: `${activeFeature.color}08`,
+                  background: `${panelColor}08`,
                 }}
               >
                 <div
@@ -623,11 +640,11 @@ export default function ErpFeatures() {
                     width: '44px',
                     height: '44px',
                     borderRadius: '12px',
-                    background: activeFeature.color,
+                    background: panelColor,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: `0 4px 14px ${activeFeature.color}40`,
+                    boxShadow: `0 4px 14px rgba(79,70,229,0.35)`,
                     transition: 'background 0.5s ease',
                     flexShrink: 0,
                   }}
@@ -686,25 +703,87 @@ export default function ErpFeatures() {
               <div
                 style={{
                   flex: 1,
-                  padding: '32px',
+                  padding: isScreenshotFeature ? '12px 14px 16px' : '32px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '24px',
+                  gap: isScreenshotFeature ? '14px' : '24px',
                 }}
               >
-                {/* SVG Illustration */}
+                {/* Visual Showcase (Real Dashboard Screenshot for Students/Staff/Academic/Fees, SVG illustrations for others) */}
                 <div
                   style={{
                     width: '100%',
-                    maxWidth: '380px',
+                    maxWidth: isScreenshotFeature ? '100%' : '380px',
                     opacity: isTransitioning ? 0 : 1,
                     transform: isTransitioning ? 'scale(0.95) translateY(10px)' : 'scale(1) translateY(0)',
                     transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s',
+                    position: 'relative',
+                    borderRadius: isScreenshotFeature ? '16px' : '0px',
+                    overflow: isScreenshotFeature ? 'hidden' : 'visible',
+                    boxShadow: isScreenshotFeature ? '0 15px 40px rgba(0,0,0,0.14)' : 'none',
+                    border: isScreenshotFeature ? `1.5px solid ${panelColor}35` : 'none',
+                    imageRendering: isScreenshotFeature ? '-webkit-optimize-contrast' : 'auto',
                   }}
                 >
-                  {IllustrationComponent && IllustrationComponent(activeFeature.color)}
+                  {activeFeature.visual === 'students' ? (
+                    <img
+                      src="/students-dashboard.png"
+                      alt="Apana Campus Students Database Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'staff' ? (
+                    <img
+                      src="/staff-dashboard.png"
+                      alt="Apana Campus Staff Attendance Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'academic' ? (
+                    <img
+                      src="/academic-dashboard.png"
+                      alt="Apana Campus Academic Classes and Sections Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'fees' ? (
+                    <img
+                      src="/fees-dashboard.png"
+                      alt="Apana Campus Fees Collection & Invoicing Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'timetable' ? (
+                    <img
+                      src="/timetable-dashboard.png"
+                      alt="Apana Campus Timetable Grid and Scheduling Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'examination' ? (
+                    <img
+                      src="/examination-dashboard.png"
+                      alt="Apana Campus Examination Marks & Report Card Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'reports' ? (
+                    <img
+                      src="/reports-dashboard.png"
+                      alt="Apana Campus Attendance Reports & Analysis Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'settings' ? (
+                    <img
+                      src="/settings-dashboard.png"
+                      alt="Apana Campus App Management & Branding Settings Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : activeFeature.visual === 'calendar' ? (
+                    <img
+                      src="/calendar-dashboard.png"
+                      alt="Apana Campus Academic & Events Calendar Dashboard"
+                      className="w-full h-auto block transition-transform duration-500 hover:scale-[1.01]"
+                    />
+                  ) : (
+                    IllustrationComponent && IllustrationComponent(panelColor)
+                  )}
                 </div>
 
                 {/* Description */}
@@ -743,9 +822,9 @@ export default function ErpFeatures() {
                       style={{
                         padding: '6px 14px',
                         borderRadius: '24px',
-                        background: `${activeFeature.color}12`,
-                        border: `1px solid ${activeFeature.color}30`,
-                        color: activeFeature.color,
+                        background: `${panelColor}12`,
+                        border: `1px solid ${panelColor}30`,
+                        color: panelColor,
                         fontSize: '11px',
                         fontWeight: '600',
                         letterSpacing: '0.04em',
@@ -766,7 +845,7 @@ export default function ErpFeatures() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  borderTop: `1px solid ${activeFeature.color}12`,
+                  borderTop: `1px solid ${panelColor}12`,
                 }}
               >
                 {erpFeatures.map((_, i) => (
@@ -777,7 +856,7 @@ export default function ErpFeatures() {
                       height: '4px',
                       borderRadius: '4px',
                       cursor: 'pointer',
-                      background: i === activeIndex ? activeFeature.color : `${activeFeature.color}25`,
+                      background: i === activeIndex ? panelColor : `${panelColor}25`,
                       width: i === activeIndex ? '24px' : '6px',
                       transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}

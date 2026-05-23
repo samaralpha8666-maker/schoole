@@ -7,41 +7,41 @@ import { Check } from 'lucide-react';
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState<boolean>(true);
 
-  // Pricing plans with Monthly/Yearly support (Yearly gets 20% discount)
+  // Pricing plans with Monthly/Yearly support
   const pricingPlans = [
     {
-      name: "🌿 Starter Plan",
-      desc: "Perfect for small academies, play schools, or coaching institutes starting digitization.",
-      monthlyPrice: 29,
-      yearlyPrice: 23,
-      students: "Up to 200 Students",
-      schema: "Shared Schema Isolation",
-      staff: "Up to 15 Staff members",
-      support: "Standard Email Support",
-      trialLink: "/contact?plan=starter",
+      name: "🌿 Basic School Plan",
+      desc: "Perfect for Schools & Colleges with up to 500 students.",
+      monthlyPrice: "₹1,200",
+      yearlyPrice: "₹10,000",
+      students: "Up to 500 Students",
+      schema: "Complete School Management System",
+      staff: "Unlimited Staff & Teachers",
+      support: "24×7 Customer Support & Training",
+      trialLink: "/contact?plan=basic",
       isPopular: false
     },
     {
-      name: "🚀 Growth Plan",
-      desc: "Ideal for a single large school or college seeking complete data security and priority speeds.",
-      monthlyPrice: 79,
-      yearlyPrice: 63,
-      students: "Unlimited Students",
-      schema: "Dedicated Private PostgreSQL Schema",
+      name: "🚀 Advanced Institution Plan",
+      desc: "Best for large Schools & Colleges with more than 500 students.",
+      monthlyPrice: "₹1,700",
+      yearlyPrice: "₹14,000",
+      students: "500+ Students",
+      schema: "Advanced Dashboard & Analytics",
       staff: "Unlimited Staff & Teachers",
-      support: "24/7 Priority Developer Support",
-      trialLink: "/contact?plan=growth",
+      support: "Priority Support + Full Setup Help",
+      trialLink: "/contact?plan=advanced",
       isPopular: true
     },
     {
-      name: "💎 Enterprise Plan",
-      desc: "Best for school chains, college franchises, or multi-campus universities needing fully custom integrations.",
+      name: "💎 Enterprise Custom Plan",
+      desc: "For Universities, School Chains & Multi-Campus Institutions.",
       monthlyPrice: "Custom",
       yearlyPrice: "Custom",
       students: "Unlimited Students",
-      schema: "Private Schema + Custom Domain Mapping",
-      staff: "Unlimited Staff & Teachers",
-      support: "Dedicated Enterprise Account Manager",
+      schema: "Custom Features & Integrations",
+      staff: "Dedicated Account Manager",
+      support: "Premium Enterprise Support",
       trialLink: "/contact?plan=enterprise",
       isPopular: false
     }
@@ -106,12 +106,14 @@ export default function PricingSection() {
 
                 {/* Price */}
                 <div className="py-2 border-y border-[#2B2927]/10">
-                  {typeof plan.monthlyPrice === 'number' ? (
+                  {plan.monthlyPrice !== 'Custom' ? (
                     <div className="flex items-baseline gap-1">
                       <span className="font-serif text-4xl font-extrabold text-base-dark">
-                        ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                        {isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                       </span>
-                      <span className="text-[10px] text-[#C7B198] font-bold uppercase tracking-wider">/ student / mo</span>
+                      <span className="text-[10px] text-[#C7B198] font-bold uppercase tracking-wider">
+                        {isYearly ? '/ year' : '/ month'}
+                      </span>
                     </div>
                   ) : (
                     <span className="font-serif text-3xl font-extrabold text-base-dark block">Custom Pricing</span>

@@ -10,7 +10,7 @@ const OG_IMAGE = `${SITE_URL}/og-image.png`;
 export const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'ApnaCampus',
+  name: 'ApanaCampus',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   contactPoint: {
@@ -24,7 +24,7 @@ export const orgSchema = {
 export const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'ApnaCampus ERP & LMS',
+  name: 'ApanaCampus - School and College Management ERP',
   operatingSystem: 'All',
   applicationCategory: 'EducationalApplication',
   aggregateRating: {
@@ -57,10 +57,11 @@ export function buildMetadata({
     title,
     description,
     keywords: [
+      'school and college management erp',
       'school management software India',
       'college ERP software',
       'multi-tenant school ERP',
-      'ApnaCampus',
+      'ApanaCampus',
       'school admission management',
       ...keywords,
     ].join(', '),
@@ -70,7 +71,7 @@ export function buildMetadata({
       title,
       description,
       url,
-      siteName: 'ApnaCampus',
+      siteName: 'ApanaCampus',
       locale: 'en_IN',
       type: 'website',
       images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: title }],

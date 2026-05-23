@@ -11,16 +11,16 @@ const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo', displa
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'ApnaCampus – Best School & College Management ERP Software in India',
-    template: '%s | ApnaCampus ERP',
+    default: 'ApanaCampus – Best School and College Management ERP Software',
+    template: '%s | ApanaCampus ERP',
   },
   description:
-    'ApnaCampus is a premium multi-tenant ERP & LMS platform for schools and colleges in India. Manage admissions, timetable, fees, exams, library, transport, and more — all in one platform.',
+    'ApanaCampus is the best School and College Management ERP Software. Manage school & college admissions, fees, timetables, academic exams, attendance, transport, and payroll in one secure cloud portal.',
   keywords:
-    'school management software India, college ERP, LMS school app, student admission portal, teacher attendance app, ApnaCampus, school ERP India',
-  authors: [{ name: 'ApnaCampus Team' }],
+    'school and college management erp, school management erp, college erp software, best school and college erp, educational portal erp, ApanaCampus, school erp india, college erp system',
+  authors: [{ name: 'ApanaCampus Team' }],
   robots: { index: true, follow: true },
-  openGraph: { type: 'website', locale: 'en_IN', siteName: 'ApnaCampus' },
+  openGraph: { type: 'website', locale: 'en_IN', siteName: 'ApanaCampus' },
   twitter: { card: 'summary_large_image' },
 };
 

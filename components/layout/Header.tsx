@@ -11,8 +11,8 @@ import {
 const navLinks = [
   { label: 'Features', href: '/#features' },
   { label: 'Why Security', href: '/#security' },
-  { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Mobile App', href: '/mobile' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'FAQs', href: '/#faq' },
 ];
 
