@@ -386,8 +386,17 @@ export default function ErpFeatures() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const itemRefs = useRef<any[]>([]);
+  const mobileTabRefs = useRef<any[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Scroll active mobile tab into view dynamically
+  useEffect(() => {
+    const mobileTab = mobileTabRefs.current[activeIndex] as HTMLElement | undefined;
+    if (mobileTab) {
+      mobileTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [activeIndex]);
 
   // Handle custom event from Header to select a feature and scroll to the section
   useEffect(() => {
@@ -526,12 +535,74 @@ export default function ErpFeatures() {
         </div>
 
         {/* Main Scroll Layout */}
-        <div className="flex gap-0 relative items-start">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-0 relative items-start">
+
+          {/* MOBILE: Horizontal Feature Tabs — Visible only on mobile */}
+          <div className="w-full md:hidden flex overflow-x-auto gap-3 pb-4 mb-6 no-scrollbar snap-x snap-mandatory -mx-4 px-4 scroll-smooth">
+            <style>{`
+              .no-scrollbar::-webkit-scrollbar { display: none; }
+              .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
+            {erpFeatures.map((feat, idx) => {
+              const Icon = feat.icon;
+              const isActive = activeIndex === idx;
+              return (
+                <button
+                  key={idx}
+                  ref={(el) => { mobileTabRefs.current[idx] = el; }}
+                  onClick={() => {
+                    setIsTransitioning(true);
+                    setTimeout(() => {
+                      setActiveIndex(idx);
+                      setIsTransitioning(false);
+                    }, 150);
+                  }}
+                  className="flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 snap-center"
+                  style={{
+                    border: isActive ? `2px solid ${feat.color}40` : '2px solid #EFECE9',
+                    background: isActive ? `${feat.bg}80` : 'white',
+                    boxShadow: isActive 
+                      ? `0 6px 20px ${feat.color}15` 
+                      : '0 1px 3px rgba(0,0,0,0.03)',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '8px',
+                      background: isActive ? feat.color : '#F0EDE8',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    <Icon
+                      size={14}
+                      style={{ color: isActive ? 'white' : feat.color, transition: 'color 0.3s ease' }}
+                    />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "'Georgia', serif",
+                      fontSize: '14px',
+                      fontWeight: '700',
+                      color: isActive ? feat.color : '#1C1C1C',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {feat.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
           {/* LEFT: Feature Scroller — 32% */}
           <div
             ref={scrollContainerRef}
-            className="w-[32%] flex-shrink-0 pr-8 space-y-3"
+            className="hidden md:block md:w-[32%] flex-shrink-0 pr-8 space-y-3"
             style={{ maxHeight: '85vh', overflowY: 'auto', scrollbarWidth: 'none' }}
           >
             <style>{`
@@ -670,10 +741,11 @@ export default function ErpFeatures() {
 
           {/* RIGHT: Sticky Visual Panel — 68% */}
           <div
-            className="w-[68%] flex-shrink-0"
-            style={{ position: 'sticky', top: '100px', height: 'fit-content' }}
+            className="w-full md:w-[68%] flex-shrink-0 md:sticky md:top-28"
+            style={{ height: 'fit-content' }}
           >
             <div
+              className="min-h-[460px] md:min-h-[540px]"
               style={{
                 borderRadius: '28px',
                 overflow: 'hidden',
@@ -681,7 +753,6 @@ export default function ErpFeatures() {
                 border: `1.5px solid ${panelColor}20`,
                 boxShadow: `0 20px 60px rgba(79,70,229,0.12), 0 4px 16px rgba(79,70,229,0.08)`,
                 transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                minHeight: '540px',
                 display: 'flex',
                 flexDirection: 'column',
               }}
@@ -777,7 +848,7 @@ export default function ErpFeatures() {
                 <div
                   style={{
                     width: '100%',
-                    maxWidth: isScreenshotFeature ? '100%' : '380px',
+                    maxWidth: isScreenshotFeature ? '100%' : '320px',
                     opacity: isTransitioning ? 0 : 1,
                     transform: isTransitioning ? 'scale(0.95) translateY(10px)' : 'scale(1) translateY(0)',
                     transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s',
