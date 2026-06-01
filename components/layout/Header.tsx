@@ -327,9 +327,13 @@ export default function Header() {
       >
         {/* Panel header */}
         <div className="flex items-center justify-between px-7 py-5 border-b border-black/[0.07]">
-          <div className="flex items-center gap-3">
-            <Logo className="w-8 h-8" />
-            <div className="flex flex-col">
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 group cursor-pointer"
+          >
+            <Logo className="w-8 h-8 group-hover:scale-[1.03] transition-transform duration-300" />
+            <div className="flex flex-col text-left">
               <span className="font-bold text-[14px] tracking-[2px] uppercase text-[#1C1C1C]">
                 ApanaCampus
               </span>
@@ -337,7 +341,7 @@ export default function Header() {
                 Schema-Isolated ERP
               </span>
             </div>
-          </div>
+          </Link>
           <button
             onClick={() => setIsOpen(false)}
             className="p-1.5 text-black/40 hover:text-[#2D5A27] rounded-full hover:bg-black/5 transition-all"
