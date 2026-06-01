@@ -26,9 +26,165 @@ const innerPersonas = [
 // Custom radius per persona: Students gets a larger radius to push it up and clear the phone
 const personaRadius = [210, 170, 170];
 
+const appFeatures = [
+  {
+    id: "students",
+    title: "Students",
+    image: "/students-dashboard.png",
+    icon: "🎓",
+    color: "#3B82F6",
+    tagline: "Student Dashboard",
+    description: "Students and parents get a comprehensive view of their academic journey. Keep track of daily progress, attendance, homework, and performance reports directly on your mobile device.",
+    bulletPoints: [
+      "Real-time homework & assignment updates",
+      "Instant attendance status with monthly stats",
+      "Teacher's remarks & performance charts",
+      "Digital report cards and progress history"
+    ]
+  },
+  {
+    id: "staff",
+    title: "Staff & Teachers",
+    image: "/staff-dashboard.png",
+    icon: "👩‍🏫",
+    color: "#F97316",
+    tagline: "Classroom Management",
+    description: "Empower teachers with tools to manage classrooms on the go. Reduce administrative overhead, mark attendance quickly, and interact with parents directly.",
+    bulletPoints: [
+      "Quick attendance marking in less than 30 seconds",
+      "Assign and grade homework directly from mobile",
+      "Direct communication channel with parents",
+      "Publish exam marks and remarks instantaneously"
+    ]
+  },
+  {
+    id: "academics",
+    title: "Academic",
+    image: "/academic-dashboard.png",
+    icon: "📚",
+    color: "#10B981",
+    tagline: "Curriculum Tracking",
+    description: "Track progress of class lessons, syllabus completion, and daily academic schedules. Stay synced with teaching goals and milestones.",
+    bulletPoints: [
+      "Syllabus status and lesson plans visibility",
+      "Daily classwork updates for students",
+      "Resource sharing (documents, videos, links)",
+      "Substitute teacher management updates"
+    ]
+  },
+  {
+    id: "fees",
+    title: "Fees",
+    image: "/fees-dashboard.png",
+    icon: "💳",
+    color: "#F59E0B",
+    tagline: "Online Payments",
+    description: "Parents can view detailed fee structures, pending dues, and make instant secure online payments with automatic receipt generation.",
+    bulletPoints: [
+      "Detailed fee breakdowns and history logs",
+      "Instant digital receipts upon successful payment",
+      "Automatic push notifications for deadlines",
+      "Secure integrations with trusted payment gateways"
+    ]
+  },
+  {
+    id: "exams",
+    title: "Exams",
+    image: "/examination-dashboard.png",
+    icon: "✍️",
+    color: "#EF4444",
+    tagline: "Result Publishing",
+    description: "Access examination schedules, publish result marks instantly, and view analytical report cards showing subject-wise progress.",
+    bulletPoints: [
+      "View upcoming exam timetables and syllabus",
+      "Access digital report cards when published",
+      "Subject-wise grade analysis & comparison charts",
+      "Admit cards download directly from the app"
+    ]
+  },
+  {
+    id: "timetable",
+    title: "Timetable",
+    image: "/timetable-dashboard.png",
+    icon: "🕒",
+    color: "#8B5CF6",
+    tagline: "Schedule Manager",
+    description: "Check daily period divisions, class timetables, and teacher assignments. Helps students and teachers stay organized.",
+    bulletPoints: [
+      "Interactive daily and weekly schedule view",
+      "Color-coded periods with teacher information",
+      "Real-time notifications for schedule changes",
+      "Quick access to links for online classes"
+    ]
+  },
+  {
+    id: "calendar",
+    title: "Calendar",
+    image: "/calendar-dashboard.png",
+    icon: "📅",
+    color: "#EC4899",
+    tagline: "Events & Holidays",
+    description: "Keep track of the school's annual activities, upcoming parent-teacher meetings, events, and seasonal holidays in a single unified view.",
+    bulletPoints: [
+      "Track school events and annual schedules",
+      "Parent-Teacher meeting (PTM) reminders",
+      "Direct integration with system notifications",
+      "Instant announcements for emergency holidays"
+    ]
+  },
+  {
+    id: "reports",
+    title: "Reports",
+    image: "/reports-dashboard.png",
+    icon: "📈",
+    color: "#14B8A6",
+    tagline: "Data Analytics",
+    description: "Administrators and school management get graphic dashboards for student attendance, fee collections, outstanding dues, and performance metrics.",
+    bulletPoints: [
+      "Attendance summaries for classes or whole school",
+      "Fee collection versus outstanding reports",
+      "Academic performance trends over semesters",
+      "Detailed user activity and login reports"
+    ]
+  },
+  {
+    id: "settings",
+    title: "Settings",
+    image: "/settings-dashboard.png",
+    icon: "⚙️",
+    color: "#6B7280",
+    tagline: "Preferences",
+    description: "Quickly switch between sibling accounts for parents, configure push alerts, edit profile details, and set up biometric or secure login details.",
+    bulletPoints: [
+      "Easy sibling profile switching for parents",
+      "Notification preferences (SMS, Email, Push)",
+      "Secure password management & PIN login",
+      "Theme choices & language selector"
+    ]
+  },
+  {
+    id: "admin",
+    title: "Admin Mobile",
+    image: "/mobile-manage.jpg",
+    icon: "📱",
+    color: "#6366F1",
+    tagline: "Management Console",
+    description: "Admins can oversee operational stats, view live registration count, approve leave request applications, and control general system features.",
+    bulletPoints: [
+      "Daily admission counters & registration updates",
+      "Instant system-wide push notification broadcasting",
+      "Approve leave requests and staff permissions",
+      "Live collection and attendance tracking dashboard"
+    ]
+  }
+];
+
 export default function MobileSection() {
   const [scale, setScale] = useState(1);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('students');
+
+  const activeFeature = appFeatures.find(f => f.id === activeTab) || appFeatures[0];
 
   useEffect(() => {
     const handleResize = () => {
@@ -100,6 +256,26 @@ export default function MobileSection() {
               }
               .orbit-outer:hover .node-counter-rotate {
                 animation-play-state: paused;
+              }
+              @keyframes fade-in-up {
+                from {
+                  opacity: 0;
+                  transform: translateY(12px) scale(0.97);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0) scale(1);
+                }
+              }
+              .animate-fade-in-up {
+                animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+              }
+              .scrollbar-none::-webkit-scrollbar {
+                display: none;
+              }
+              .scrollbar-none {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
               }
             `}</style>
 
@@ -241,6 +417,127 @@ export default function MobileSection() {
               <p className="text-[16px] font-black tracking-tight">App Store</p>
             </div>
           </a>
+        </div>
+
+        {/* Interactive Feature Showcase Section */}
+        <div className="border-t border-[#2B2927]/10 pt-16 mt-16 space-y-12">
+          {/* Showcase Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-[#2D5A27] text-xs font-bold uppercase tracking-widest bg-[#E2EBD5] px-3 py-1 rounded-full border border-[#2D5A27]/20">
+              Interactive Showcase
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl text-[#1C1C1C] font-bold">
+              Explore Our App Features in Action
+            </h3>
+            <p className="text-[#2B2927]/70 text-sm sm:text-base font-light">
+              Select any feature below to preview the mobile dashboard and see how ApanaCampus simplifies school administration.
+            </p>
+          </div>
+
+          {/* Scrollable Tabs */}
+          <div className="w-full overflow-x-auto pb-4 scrollbar-none flex justify-start lg:justify-center gap-2.5 px-2">
+            {appFeatures.map((feat) => {
+              const isActive = activeTab === feat.id;
+              return (
+                <button
+                  key={feat.id}
+                  onClick={() => setActiveTab(feat.id)}
+                  style={{
+                    borderColor: isActive ? feat.color : 'rgba(43,41,39,0.1)',
+                    backgroundColor: isActive ? `${feat.color}08` : 'white',
+                    color: isActive ? feat.color : '#2B2927',
+                  }}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-xs sm:text-sm font-semibold whitespace-nowrap cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+                    isActive ? 'shadow-[0_4px_12px_rgba(0,0,0,0.03)]' : 'hover:border-[#2B2927]/30'
+                  }`}
+                >
+                  <span className="text-sm">{feat.icon}</span>
+                  <span>{feat.title}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#F3F4F1]/30 p-4 sm:p-6 rounded-3xl border border-[#2D5A27]/5">
+            {/* Feature Information Card (Left 7 Cols) */}
+            <div className="lg:col-span-7 space-y-6 flex flex-col justify-center h-full bg-white p-6 md:p-10 rounded-3xl border border-[#2B2927]/10 shadow-sm relative overflow-hidden">
+              {/* Top Accent Line */}
+              <div 
+                className="absolute top-0 left-0 right-0 h-1.5"
+                style={{ backgroundColor: activeFeature.color }}
+              />
+
+              {/* Highlight Tagline */}
+              <div className="space-y-2">
+                <div 
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl mb-4 shadow-sm animate-fade-in-up"
+                  style={{ backgroundColor: `${activeFeature.color}15`, color: activeFeature.color }}
+                >
+                  {activeFeature.icon}
+                </div>
+                <span 
+                  className="text-xs font-black uppercase tracking-wider block animate-fade-in-up"
+                  style={{ color: activeFeature.color }}
+                >
+                  {activeFeature.tagline}
+                </span>
+                <h4 className="text-xl sm:text-2xl font-bold text-[#1C1C1C] font-serif leading-tight animate-fade-in-up">
+                  {activeFeature.title} Module
+                </h4>
+              </div>
+
+              {/* Description */}
+              <p className="text-[#2B2927]/80 text-sm sm:text-base leading-relaxed font-light animate-fade-in-up">
+                {activeFeature.description}
+              </p>
+
+              {/* Bullet Points */}
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                {activeFeature.bulletPoints.map((point, index) => (
+                  <li key={index} className="flex items-start gap-2.5 animate-fade-in-up">
+                    <span 
+                      className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5"
+                      style={{ backgroundColor: `${activeFeature.color}15`, color: activeFeature.color }}
+                    >
+                      ✓
+                    </span>
+                    <span className="text-[#2B2927]/90 text-[13px] sm:text-[14px] leading-snug font-medium">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Phone Showcase Mockup (Right 5 Cols) */}
+            <div className="lg:col-span-5 flex justify-center items-center py-4">
+              {/* iPhone Style Frame */}
+              <div className="relative w-[240px] sm:w-[260px] aspect-[393/852] rounded-[44px] bg-[#0c0c0d] p-[6px] ring-1 ring-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.3)] border-[2px] border-[#2b2b2c] transition-all duration-500 hover:scale-[1.02]">
+                {/* Screen bezel internal border */}
+                <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-neutral-900">
+                  {/* Dynamic Island */}
+                  <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[80px] h-[16px] bg-black rounded-[8px] z-50" />
+
+                  {/* Glass reflection overlay */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/0 via-white/5 to-white/15 z-40" />
+
+                  {/* Dynamic Screenshot Image */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      key={activeFeature.id}
+                      src={activeFeature.image}
+                      alt={activeFeature.title}
+                      fill
+                      sizes="(max-width: 640px) 240px, 260px"
+                      priority
+                      className="object-cover object-top animate-fade-in-up"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
