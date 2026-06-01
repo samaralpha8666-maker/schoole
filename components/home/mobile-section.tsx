@@ -183,8 +183,24 @@ export default function MobileSection() {
   const [scale, setScale] = useState(1);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('students');
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   const activeFeature = appFeatures.find(f => f.id === activeTab) || appFeatures[0];
+
+  const getCentralImage = () => {
+    if (!hoveredNode) return "/mobile-dashboard.jpg";
+    const lowerNode = hoveredNode.toLowerCase();
+    if (lowerNode.includes("student")) return "/students-dashboard.png";
+    if (lowerNode.includes("teacher") || lowerNode.includes("staff")) return "/staff-dashboard.png";
+    if (lowerNode.includes("parent")) return "/students-dashboard.png";
+    if (lowerNode.includes("fee")) return "/fees-dashboard.png";
+    if (lowerNode.includes("exam") || lowerNode.includes("result") || lowerNode.includes("report")) return "/examination-dashboard.png";
+    if (lowerNode.includes("time table") || lowerNode.includes("timetable")) return "/timetable-dashboard.png";
+    if (lowerNode.includes("calendar")) return "/calendar-dashboard.png";
+    if (lowerNode.includes("admission") || lowerNode.includes("registration")) return "/mobile-manage.jpg";
+    if (lowerNode.includes("academic") || lowerNode.includes("lms")) return "/academic-dashboard.png";
+    return "/mobile-dashboard.jpg";
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -269,6 +285,13 @@ export default function MobileSection() {
               }
               .animate-fade-in-up {
                 animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+              }
+              @keyframes fade-in {
+                from { opacity: 0; }
+                to { opacity: 1; }
+              }
+              .animate-fade-in {
+                animation: fade-in 0.25s ease-out forwards;
               }
               .scrollbar-none::-webkit-scrollbar {
                 display: none;
@@ -364,19 +387,23 @@ export default function MobileSection() {
             </div>
 
             {/* Central Phone Mockup (iPhone 16 Pro Style) */}
-            <div className="absolute top-[200px] w-[184px] aspect-[393/852] rounded-[38px] bg-[#0c0c0d] p-[4px] ring-1 ring-white/10 ring-inset shadow-[0_25px_60px_rgba(0,0,0,0.35)] border-[1.5px] border-[#2b2b2c] z-30 transition-transform duration-500 hover:scale-[1.03] group">
+            <div 
+              onClick={() => setZoomImage(getCentralImage())}
+              className="absolute top-[200px] w-[184px] aspect-[393/852] rounded-[38px] bg-[#0c0c0d] p-[4px] ring-1 ring-white/10 ring-inset shadow-[0_25px_60px_rgba(0,0,0,0.35)] border-[1.5px] border-[#2b2b2c] z-30 transition-transform duration-500 hover:scale-[1.05] cursor-zoom-in group"
+            >
               {/* Screen Frame */}
-              <div className="relative w-full h-full rounded-[34px] overflow-hidden bg-white">
+              <div className="relative w-full h-full rounded-[34px] overflow-hidden bg-neutral-900">
                 {/* Dynamic Island */}
                 <div className="absolute top-[8px] left-1/2 -translate-x-1/2 w-[72px] h-[13px] bg-black rounded-[8px] z-50" />
 
                 {/* Screen dashboard image */}
                 <Image
-                  src="/mobile-dashboard.jpg"
+                  key={getCentralImage()}
+                  src={getCentralImage()}
                   alt="ApanaCampus Stakeholder Mobile App Overview"
                   fill
                   sizes="180px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.01]"
+                  className="object-cover object-top transition-transform duration-500 animate-fade-in-up"
                 />
               </div>
             </div>
@@ -513,9 +540,12 @@ export default function MobileSection() {
             {/* Phone Showcase Mockup (Right 5 Cols) */}
             <div className="lg:col-span-5 flex justify-center items-center py-4">
               {/* iPhone Style Frame */}
-              <div className="relative w-[240px] sm:w-[260px] aspect-[393/852] rounded-[44px] bg-[#0c0c0d] p-[6px] ring-1 ring-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.3)] border-[2px] border-[#2b2b2c] transition-all duration-500 hover:scale-[1.02]">
+              <div 
+                onClick={() => setZoomImage(activeFeature.image)}
+                className="relative w-[240px] sm:w-[260px] aspect-[393/852] rounded-[44px] bg-[#0c0c0d] p-[6px] ring-1 ring-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.3)] border-[2px] border-[#2b2b2c] transition-all duration-500 hover:scale-[1.05] cursor-zoom-in"
+              >
                 {/* Screen bezel internal border */}
-                <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-neutral-900">
+                <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-neutral-900 bg-white">
                   {/* Dynamic Island */}
                   <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[80px] h-[16px] bg-black rounded-[8px] z-50" />
 
@@ -539,6 +569,40 @@ export default function MobileSection() {
             </div>
           </div>
         </div>
+
+        {/* Fullscreen Lightbox Zoom Modal */}
+        {zoomImage && (
+          <div 
+            className="fixed inset-0 z-[999] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out animate-fade-in"
+            onClick={() => setZoomImage(null)}
+          >
+            {/* Close Button */}
+            <button 
+              onClick={() => setZoomImage(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer transition-all duration-200 z-[1000] text-xl font-bold flex items-center justify-center w-12 h-12"
+              aria-label="Close Preview"
+            >
+              ✕
+            </button>
+            {/* Large Realistic iPhone Mockup */}
+            <div 
+              className="relative max-h-[90vh] max-w-[95vw] aspect-[393/852] w-[320px] sm:w-[380px] md:w-[420px] rounded-[48px] bg-[#0c0c0d] p-[8px] ring-1 ring-white/10 border-[2px] border-[#2b2b2c] cursor-default animate-fade-in-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full rounded-[40px] overflow-hidden bg-neutral-900">
+                <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-[90px] h-[20px] bg-black rounded-[10px] z-50" />
+                <Image
+                  src={zoomImage}
+                  alt="Zoomed Dashboard Screenshot"
+                  fill
+                  sizes="(max-width: 640px) 320px, 420px"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>
