@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Check } from 'lucide-react';
 
 export default function PricingSection() {
-  const [isYearly, setIsYearly] = useState<boolean>(true);
+  const [isYearly, setIsYearly] = useState<boolean>(false);
 
   // Pricing plans with Monthly/Yearly support
   const pricingPlans = [
