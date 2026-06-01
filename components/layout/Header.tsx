@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Logo from './Logo';
 import {
   Menu, X, ChevronRight, ChevronDown,
   Phone, Mail, MapPin,
@@ -147,15 +148,7 @@ export default function Header() {
           <Link href="/"
             className="flex items-center gap-3.5 group flex-shrink-0"
             aria-label="ApnaCampus Home">
-            <div className="
-              w-[38px] h-[38px] rounded-[10px]
-              bg-[#1C1C1C] text-[#FAF9F6]
-              flex items-center justify-center
-              font-serif text-[18px] font-bold tracking-tight
-              group-hover:scale-[1.03] transition-transform duration-300
-            ">
-              A
-            </div>
+            <Logo className="w-[38px] h-[38px] group-hover:scale-[1.03] transition-transform duration-300" />
             <div className="flex flex-col justify-center leading-tight">
               <span className="
                 font-serif text-[16px] md:text-[17px] font-bold
@@ -335,9 +328,7 @@ export default function Header() {
         {/* Panel header */}
         <div className="flex items-center justify-between px-7 py-5 border-b border-black/[0.07]">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-[8px] bg-[#1C1C1C] text-[#FAF9F6] flex items-center justify-center font-serif text-base font-bold">
-              A
-            </div>
+            <Logo className="w-8 h-8" />
             <div className="flex flex-col">
               <span className="font-bold text-[14px] tracking-[2px] uppercase text-[#1C1C1C]">
                 ApanaCampus

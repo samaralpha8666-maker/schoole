@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { GraduationCap, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import Logo from './Logo';
 
 const footerLinks = [
   {
@@ -40,9 +41,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1 space-y-6">
             <Link href="/" className="flex items-center gap-2.5 group" aria-label="ApnaCampus Home">
-              <div className="w-9 h-9 rounded-full bg-accent-green flex items-center justify-center text-white shadow-sm">
-                <GraduationCap className="w-5 h-5 text-white" />
-              </div>
+              <Logo className="w-9 h-9" braceColor="text-white" />
               <div className="flex flex-col text-left">
                 <span className="font-serif text-base font-bold tracking-[1.5px] text-white leading-none uppercase">
                   Apana Campus
