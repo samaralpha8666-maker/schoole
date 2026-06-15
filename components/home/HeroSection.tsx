@@ -124,10 +124,10 @@ export default function HeroSection() {
         <div className="space-y-2">
           <h1 className="font-serif text-[2.5rem] md:text-[3.2rem] font-bold leading-none text-[#1C1C1C] tracking-tight" id="hero-heading">
             APANACAMPUS <span className="text-[#2D5A27] font-serif">10X</span>
+            <span className="text-[13.5px] tracking-[1.8px] uppercase font-black text-[#2D5A27] block mt-2 font-sans">
+              Premium School & College Management ERP
+            </span>
           </h1>
-          <p className="text-[13.5px] tracking-[1.8px] uppercase font-black text-[#2D5A27]">
-            Premium School & College Management ERP
-          </p>
         </div>
 
         {/* Bullets List (Exactly matches the bullet items in user screenshot) */}

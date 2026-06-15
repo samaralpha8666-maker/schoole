@@ -40,6 +40,78 @@ export const softwareSchema = {
   },
 };
 
+// Shared contact schema
+export const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact ApanaCampus Support and Sales',
+  description: 'Request a live campus ERP demo or log an administrative support ticket.',
+  url: `${SITE_URL}/contact`,
+  mainEntity: {
+    '@type': 'ContactPoint',
+    telephone: '+91-89285-67312',
+    contactType: 'sales',
+    areaServed: 'IN',
+    availableLanguage: ['Hindi', 'English'],
+  },
+};
+
+// FAQ Schema matching the home page FAQ exactly
+export const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How secure is PostgreSQL Schema Isolation? Can one school see another school\'s records?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No, physically impossible. Unlike generic ERP databases that place all schools inside one massive table with a simple \'school_id\' filter, Apana Campus leverages native PostgreSQL schemas. Each school gets an entirely separate logical database partition with restricted access permissions.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can we import our existing student and teacher lists via Excel or CSV?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, easily! Our system contains a powerful, automated Bulk Directory Uploader. You simply download our standard Excel template, paste your student rosters, teacher rosters, or active credit balances, and upload.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does the system support custom PDF report cards and academic transcript exports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absolutely. You can generate professional, high-resolution PDF report cards, financial ledger spreadsheets, monthly fee receipts, and official student transfer transcripts directly from the administrative portal with custom school logo stamps.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are there any setup fees or hidden hosting charges?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No setup fees, no hidden charges. Our monthly and yearly licensing fees are fully inclusive of isolated secure cloud hosting, daily automated database backups, WhatsApp/SMS gateway infrastructure integrations, and all new feature updates.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you perform automated backups? Can we download our entire database backup?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. We execute automated, hourly snapshots of all tenant schemas with 30-day retention policies on secure Amazon S3 vaults. Additionally, you always own your data. Administrators can download complete JSON or CSV database dumps of their entire campus roster at any time.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can parents pay school fees online? What gateways are supported?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! The unified Parent Portal features single-click online fee payments. We support major national payment gateways out-of-the-box, allowing payments via UPI, NetBanking, Credit/Debit Cards, and popular wallets.',
+      },
+    },
+  ],
+};
+
 // ─── Page-specific metadata factories ─────────────────────────
 export function buildMetadata({
   title,

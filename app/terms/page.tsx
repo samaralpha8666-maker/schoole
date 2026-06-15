@@ -1,8 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { FileText, ShieldAlert, Sparkles, Scale, BookOpen, AlertCircle, HelpCircle } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
+
+export const metadata = buildMetadata({
+  title: 'Terms of Service | SaaS Licensing Agreement | ApanaCampus',
+  description: 'Read the ApanaCampus Terms of Service. Understand our logical database partitioning SLAs, acceptable use guidelines, payment gateways, and liability policies.',
+  path: '/terms',
+  keywords: ['school ERP terms of service', 'educational SaaS SLA agreement', 'apana campus compliance terms'],
+});
 
 export default function TermsOfServicePage() {
   return (

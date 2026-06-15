@@ -1,8 +1,19 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import { Sparkle, ArrowRight, Database, Compass, UserCheck, Flame } from "lucide-react";
+import { buildMetadata } from '@/lib/metadata';
+
+export const metadata = buildMetadata({
+  title: 'Onboarding & 10-Day Structured Deployment Services | ApanaCampus',
+  description: 'Learn about our rapid 10-day deployment process. We handle database schema setup, bulk directory imports, coordinator/staff training, and priority tech support.',
+  path: '/services',
+  keywords: [
+    'school software setup help',
+    'educational database migration service',
+    'apana campus 10 day deployment',
+    'school coordinator sandbox training',
+  ],
+});
 
 export default function ServicesPage() {
   const steps = [
@@ -90,4 +101,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-

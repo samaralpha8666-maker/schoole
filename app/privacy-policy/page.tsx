@@ -1,8 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Mail, Globe, MapPin, Sparkles, Building2, UserCircle2 } from 'lucide-react';
+import { buildMetadata } from '@/lib/metadata';
+
+export const metadata = buildMetadata({
+  title: 'Privacy Policy | ApanaCampus School & College ERP',
+  description: 'Understand how ApanaCampus collects, processes, and secures student, teacher, and parent records inside our schema-isolated database systems. Compliant with Play Store policies.',
+  path: '/privacy-policy',
+  keywords: ['school ERP privacy policy', 'COPPA compliance student data', 'DPDP act school records security'],
+});
 
 export default function PrivacyPolicyPage() {
   return (
