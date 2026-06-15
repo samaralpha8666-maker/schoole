@@ -70,7 +70,9 @@ function ContactContent() {
     setLoginForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.apanacampus.com';
+
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
     
@@ -82,13 +84,37 @@ function ContactContent() {
     if (!demoForm.demoDate) return setErrorMsg('Please choose a preferred date for the demo.');
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/admin/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'DEMO',
+          name: demoForm.name,
+          email: demoForm.email,
+          phone: demoForm.phone,
+          school_name: demoForm.schoolName,
+          student_strength: demoForm.strength,
+          demo_date: demoForm.demoDate,
+        }),
+      });
+
+      const resData = await response.json();
+      if (!response.ok) {
+        throw new Error(resData.error || 'Failed to submit demo request.');
+      }
+
       setIsSubmitted(true);
-    }, 1500);
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Connection failed. Please check your internet or try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleSupportSubmit = (e: React.FormEvent) => {
+  const handleSupportSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -99,10 +125,34 @@ function ContactContent() {
     if (!supportForm.message.trim()) return setErrorMsg('Please type your support message.');
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/admin/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'SUPPORT',
+          name: supportForm.name,
+          email: supportForm.email,
+          school_name: supportForm.schoolName,
+          priority: supportForm.priority,
+          subject: supportForm.subject,
+          message: supportForm.message,
+        }),
+      });
+
+      const resData = await response.json();
+      if (!response.ok) {
+        throw new Error(resData.error || 'Failed to submit support ticket.');
+      }
+
       setIsSubmitted(true);
-    }, 1500);
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Connection failed. Please check your internet or try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleLoginRedirect = (e: React.FormEvent) => {
