@@ -16,6 +16,7 @@ const footerLinks = [
     title: 'Security & Info',
     links: [
       { label: 'Contact Support', href: '/contact' },
+      { label: 'Blog & Insights', href: '/blog' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Account Deletion', href: '/delete-account' },
       { label: 'Terms of Service', href: '/terms' },

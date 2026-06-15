@@ -28,6 +28,7 @@ const navLinks = [
   { label: 'Why Security', href: '/security' },
   { label: 'Mobile App', href: '/mobile' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Blog', href: '/blog' },
   { label: 'FAQs', href: '/#faq' },
 ];
 
