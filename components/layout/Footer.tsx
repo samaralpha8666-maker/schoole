@@ -28,6 +28,7 @@ const footerLinks = [
       { label: '+91 89285 67312', href: 'tel:+918928567312' },
       { label: 'hello@apanacampus.com', href: 'mailto:hello@apanacampus.com' },
       { label: 'Google Play Store', href: 'https://play.google.com', external: true },
+      { label: 'LinkedIn Page', href: 'https://www.linkedin.com/company/apana-campus/about/?viewAsMember=true', external: true },
     ],
   },
 ];
