@@ -36,50 +36,32 @@ export default function HeroSection() {
       </div>
 
 
-      {/* ── LEFT COLUMN: High-Fidelity Mockup Frame (Dashboard, Student Card, Mobile App) ── */}
-      <div className="w-full lg:w-[56%] xl:w-[60%] relative flex items-center justify-center min-h-[460px] md:min-h-[520px] lg:min-h-[560px] z-10">
-
-        {/* Large Rounded Mockup Outer Panel - Light Soft Blue Tint in original, here light green-cream tint */}
-        <div className="relative w-full max-w-[720px] aspect-[1.38] rounded-[36px] bg-[#E2EBD5]/45 border border-[#2D5A27]/10 p-4 sm:p-5 flex items-center justify-start shadow-sm overflow-visible">
-
-          {/* 1. Desktop Browser Dashboard Mockup */}
-          <div className="w-[96%] aspect-[1.68] rounded-[18px] bg-white border border-[#2D5A27]/15 shadow-[0_20px_50px_rgba(45,90,39,0.08)] overflow-hidden relative flex flex-col transition-transform duration-500 hover:scale-[1.01] z-0">
-            {/* Sleek Browser Tab/Header Bar */}
-            <div className="bg-[#F5F4F0] border-b border-[#2D5A27]/10 px-3.5 py-2 flex items-center gap-1.5 shrink-0 select-none">
-              {/* macOS Style Window Controls */}
-              <div className="flex gap-1.5 shrink-0">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB2F]" />
-              </div>
-              {/* Address/Search Bar */}
-              <div className="h-5 bg-white border border-[#2D5A27]/8 rounded-md flex-1 max-w-[240px] mx-auto flex items-center justify-center text-[7.5px] font-bold text-[#2D5A27]/60 tracking-wider font-sans select-all select-none">
-                🔒 demo.apanacampus.com
-              </div>
-            </div>
-
-            {/* Dashboard Widescreen Viewport */}
-            <div className="relative flex-1 bg-[#FAF9F6] overflow-hidden">
-              <Image
-                src="/admin-dashboard.png"
-                alt="Apana Campus Admin Dashboard"
-                fill
-                priority
-                unoptimized={true}
-                className="object-cover object-top"
-              />
-            </div>
+      {/* ── LEFT COLUMN: High-Fidelity Infographic ERP Solution Banner ── */}
+      <div className="w-full lg:w-[50%] xl:w-[50%] relative flex items-center justify-center z-10">
+        <div className="relative w-full max-w-[760px] rounded-[32px] border border-[#2D5A27]/12 shadow-[0_25px_60px_rgba(45,90,39,0.06)] bg-white p-2.5 transition-all duration-300 hover:scale-[1.005] hover:shadow-[0_30px_70px_rgba(45,90,39,0.1)] overflow-visible">
+          
+          {/* Infographic Banner Container with rounded corners */}
+          <div className="rounded-[22px] overflow-hidden">
+            <Image
+              src="/school-erp-banner.png"
+              alt="The Complete School ERP Solution Overview"
+              width={1920}
+              height={800}
+              className="w-full h-auto object-cover"
+              priority
+            />
           </div>
+
           {/* ── 2. SINGLE STRAIGHT IPHONE 16 PRO MOCKUP (Clean, High-Fidelity & Responsive) ── */}
-          <div className="absolute right-[-15px] sm:right-[-25px] bottom-[-30px] w-[130px] sm:w-[180px] aspect-[393/852] rounded-[36px] bg-[#0c0c0d] p-[4px] sm:p-[5px] ring-1 ring-white/10 ring-inset shadow-[0_30px_60px_rgba(0,0,0,0.45)] border-[1.5px] border-[#2b2b2c] z-20 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
+          <div className="absolute right-[-15px] sm:right-[-30px] bottom-[-20px] w-[110px] sm:w-[150px] aspect-[393/852] rounded-[28px] bg-[#0c0c0d] p-[3px] sm:p-[4.5px] ring-1 ring-white/10 ring-inset shadow-[0_20px_45px_rgba(0,0,0,0.4)] border-[1px] border-[#2b2b2c] z-20 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
             {/* Ultra-thin Screen Frame */}
-            <div className="relative w-full h-full rounded-[31px] overflow-hidden bg-white">
+            <div className="relative w-full h-full rounded-[25px] overflow-hidden bg-white">
               {/* Dynamic Island */}
-              <div className="absolute top-[8px] sm:top-[10px] left-1/2 -translate-x-1/2 w-[52px] sm:w-[72px] h-[11px] sm:h-[14px] bg-black rounded-[6px] sm:rounded-[8px] z-30" />
+              <div className="absolute top-[6px] sm:top-[8px] left-1/2 -translate-x-1/2 w-[40px] sm:w-[56px] h-[8px] sm:h-[11px] bg-black rounded-[4px] sm:rounded-[6px] z-30" />
 
               {/* Screen Content - Dashboard */}
               <Image
-                src="/mobile-dashboard.jpg"
+                src="/mobile-dashboard-priya.jpg"
                 alt="Teacher ERP Attendance & Overview Dashboard"
                 fill
                 priority
@@ -89,36 +71,12 @@ export default function HeroSection() {
             </div>
           </div>
 
-
-          {/* 3. Floating Student Profile Badge (Overlaps the top-left of browser mockup exactly as seen in screenshot) */}
-          <div className="absolute left-[-15px] sm:left-[-25px] top-[20px] bg-white border border-[#2D5A27]/15 rounded-[16px] p-2.5 sm:p-3 shadow-[0_12px_35px_rgba(45,90,39,0.08)] w-[140px] flex items-center gap-2.5 z-15 transition-all duration-300 hover:scale-105 hover:shadow-[0_18px_45px_rgba(45,90,39,0.12)]">
-
-            {/* Student Photo Avatar placeholder */}
-            <div className="w-8.5 h-8.5 rounded-full bg-[#E2EBD5] flex items-center justify-center border border-[#2D5A27]/20 overflow-hidden shrink-0">
-              <svg className="w-5.5 h-5.5 text-[#2D5A27]" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
-            </div>
-
-            {/* Student Details */}
-            <div className="flex-1 min-w-0 leading-tight">
-              <h4 className="text-[8.5px] font-black text-[#1C1C1C] truncate">Anoop Awasthi</h4>
-              <p className="text-[5.5px] text-black/40 font-bold mt-0.5 truncate">Adm No: 310198295</p>
-
-              {/* School Tag Badge */}
-              <div className="mt-1 inline-block px-1.5 py-0.5 rounded-full bg-[#E2EBD5] text-[#2D5A27] text-[4.5px] font-black tracking-wider uppercase truncate max-w-full">
-                Delhi Public School, Prayagraj
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </div>
 
 
       {/* ── RIGHT COLUMN: Content Copy, Bullets, CTA & Partners (Strictly layout from screenshot) ── */}
-      <div className="w-full lg:w-[44%] xl:w-[40%] space-y-7 max-w-[540px] z-10 lg:pl-4">
+      <div className="w-full lg:w-[50%] xl:w-[50%] space-y-7 max-w-[540px] z-10 lg:pl-4">
 
         {/* Brand Name & Headline */}
         <div className="space-y-2">

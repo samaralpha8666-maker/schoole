@@ -188,7 +188,7 @@ export default function MobileSection() {
   const activeFeature = appFeatures.find(f => f.id === activeTab) || appFeatures[0];
 
   const getCentralImage = () => {
-    if (!hoveredNode) return "/mobile-dashboard.jpg";
+    if (!hoveredNode) return "/mobile-dashboard-priya.jpg";
     const lowerNode = hoveredNode.toLowerCase();
     if (lowerNode.includes("student")) return "/students-dashboard.png";
     if (lowerNode.includes("teacher") || lowerNode.includes("staff")) return "/staff-dashboard.png";
@@ -199,7 +199,7 @@ export default function MobileSection() {
     if (lowerNode.includes("calendar")) return "/calendar-dashboard.png";
     if (lowerNode.includes("admission") || lowerNode.includes("registration")) return "/mobile-manage.jpg";
     if (lowerNode.includes("academic") || lowerNode.includes("lms")) return "/academic-dashboard.png";
-    return "/mobile-dashboard.jpg";
+    return "/mobile-dashboard-priya.jpg";
   };
 
   useEffect(() => {

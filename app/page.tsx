@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import HeroSection from '@/components/home/HeroSection';
 import ErpFeatures from '@/components/home/erp-features';
 import MobileSection from '@/components/home/mobile-section';
@@ -34,31 +33,6 @@ export default function HomePage() {
       
       {/* 1. Redesigned Premium Hero Section */}
       <HeroSection />
-
-      {/* Premium Infographic Banner Section */}
-      <section className="py-12 md:py-16 bg-[#F5F2EB]/40 px-4 md:px-6 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center space-y-8">
-          <div className="space-y-3">
-            <span className="section-label">Interactive Platform</span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1A19]">
-              The Ultimate School ERP Ecosystem
-            </h2>
-            <p className="text-[#3C3A38]/80 text-sm md:text-base max-w-2xl mx-auto font-medium">
-              A single unified cloud interface connecting teachers, admins, and schedulers for seamless academic management.
-            </p>
-          </div>
-          <div className="relative rounded-[28px] overflow-hidden border border-[#2D5A27]/10 shadow-[0_20px_50px_rgba(45,90,39,0.06)] bg-white p-2 md:p-3 transition-all duration-300 hover:scale-[1.005]">
-            <Image
-              src="/school-erp-banner.png"
-              alt="The Complete School ERP Solution Dashboard Overview"
-              width={1920}
-              height={800}
-              className="w-full h-auto rounded-[20px] object-cover"
-              priority
-            />
-          </div>
-        </div>
-      </section>
 
       {/* 2.5. 14 Comprehensive ERP Core Modules */}
       <ErpFeatures />
