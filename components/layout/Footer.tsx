@@ -10,6 +10,7 @@ const footerLinks = [
       { label: 'College Management', href: '/college-management' },
       { label: 'All Features', href: '/#features' },
       { label: 'Pricing Plans', href: '/#pricing' },
+      { label: 'ERP Comparison', href: '/compare' },
     ],
   },
   {

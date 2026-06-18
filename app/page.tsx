@@ -12,6 +12,9 @@ export const metadata = buildMetadata({
   description: 'ApanaCampus is the best School and College Management ERP Software. Manage school & college admissions, fees, timetables, academic exams, attendance, transport, and payroll in one secure cloud portal.',
   path: '/',
   keywords: [
+    'cheapest school ERP',
+    'affordable school management software',
+    'low cost college ERP',
     'school management erp',
     'college management software',
     'best school ERP India',
