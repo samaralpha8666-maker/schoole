@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, Mail, Globe, MapPin, Sparkles, Building2, UserCircle2 } from 'lucide-react';
+import { ShieldCheck, Mail, Globe, MapPin, Sparkles, Building2, UserCircle2, Camera } from 'lucide-react';
 import { buildMetadata } from '@/lib/metadata';
 
 export const metadata = buildMetadata({
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="text-xs sm:text-sm text-[#2B2927]/60 font-medium">
-            Effective Date: May 23, 2026 &nbsp;|&nbsp; Last Updated: May 23, 2026
+            Effective Date: May 23, 2026 &nbsp;|&nbsp; Last Updated: June 18, 2026
           </p>
         </div>
 
@@ -101,9 +101,39 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 3 */}
+          {/* Section 3 - Biometric Data */}
+          <section className="space-y-4 border-b border-black/[0.05] pb-8 bg-[#E2EBD5]/10 p-5 rounded-[20px] border border-[#2D5A27]/5">
+            <div className="flex items-center gap-2.5">
+              <Camera className="w-5 h-5 text-[#2D5A27]" />
+              <h3 className="font-serif text-xl font-bold text-[#2D5A27] m-0">3. Biometric & Face Recognition Data</h3>
+            </div>
+            <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-3">
+              <p>
+                To support institutional security, automated check-ins, and secure user verification, our App includes optional <strong>Face ID Registration and Face Attendance</strong> features for authorized teachers and staff members.
+              </p>
+              <ul className="list-disc list-inside space-y-2 pl-3">
+                <li>
+                  <strong>Data Collection (Camera Permission):</strong> With your explicit consent, we request access to your device&apos;s camera to capture real-time photographs during the Face ID registration and verification processes.
+                </li>
+                <li>
+                  <strong>Data Processing & Storage (Facial Encodings):</strong> Captured photos are securely processed to compute a mathematical, numerical representation of your facial geometry (known as a &quot;face encoding&quot; or &quot;facial vector&quot;). We only store these mathematical encodings (<code>DOUBLE PRECISION[]</code>) in our secure, schema-isolated database. The raw photos are processed solely to generate the face encoding and are not permanently stored on our databases or shared.
+                </li>
+                <li>
+                  <strong>Purpose of Processing:</strong> Your face encoding is used exclusively to verify your identity when you clock in or clock out via the App, verifying that you are the registered employee and preventing proxy attendance.
+                </li>
+                <li>
+                  <strong>Third-Party Sharing:</strong> We do not sell, rent, lease, or share your biometric data or facial encodings with any third parties. Access is strictly restricted to your educational institution&apos;s administrators.
+                </li>
+                <li>
+                  <strong>Consent, Retention & Deletion:</strong> Participation in Face Attendance is completely optional. You can withdraw your consent and delete your biometric data at any time. To purge your face registration and encodings, you can contact your school administrator or request deletion by emailing us at <strong>info@apanacampus.com</strong>.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 4 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">3. How We Use Your Information</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">4. How We Use Your Information</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-2">
               <p>We use the collected information solely to provide, run, and improve the educational and administrative services:</p>
               <ul className="list-disc list-inside space-y-1.5 pl-3">
@@ -115,9 +145,9 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 4 */}
+          {/* Section 5 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8 bg-[#E2EBD5]/20 p-5 rounded-[20px] border border-[#2D5A27]/5">
-            <h3 className="font-serif text-xl font-bold text-[#2D5A27] m-0">4. Children&apos;s Privacy (COPPA & DPDP Compliance)</h3>
+            <h3 className="font-serif text-xl font-bold text-[#2D5A27] m-0">5. Children&apos;s Privacy (COPPA & DPDP Compliance)</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-3">
               <p>Because Apana Campus is used by Students who may be minors (under the age of 18):</p>
               <ul className="list-disc list-inside space-y-1.5 pl-3">
@@ -128,9 +158,9 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 5 */}
+          {/* Section 6 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">5. Data Sharing and Disclosure</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">6. Data Sharing and Disclosure</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-2">
               <p>We respect your privacy. <strong>We do not sell, rent, or trade your personal data.</strong> Data is only shared under the following conditions:</p>
               <ul className="list-disc list-inside space-y-1.5 pl-3">
@@ -141,9 +171,9 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 6 */}
+          {/* Section 7 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">6. Data Security and Isolation</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">7. Data Security and Isolation</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-2">
               <p>We protect school records with high-grade security infrastructures:</p>
               <ul className="list-disc list-inside space-y-1.5 pl-3">
@@ -154,9 +184,9 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 7 */}
+          {/* Section 8 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">7. Data Retention and Account Deletion</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">8. Data Retention and Account Deletion</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-3">
               <p>We retain your personal data for as long as your School maintains an active subscription or as required for educational auditing purposes.</p>
               <p><strong>Account & Data Deletion:</strong></p>
@@ -176,9 +206,9 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 8 */}
+          {/* Section 9 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">8. Your Rights</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">9. Your Rights</h3>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-2">
               <p>Depending on your jurisdiction (e.g., Digital Personal Data Protection Act - DPDP in India, or GDPR), you have the right to:</p>
               <ul className="list-disc list-inside space-y-1.5 pl-3">
@@ -191,17 +221,17 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          {/* Section 9 */}
+          {/* Section 10 */}
           <section className="space-y-4 border-b border-black/[0.05] pb-8">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">9. Changes to this Privacy Policy</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C]">10. Changes to this Privacy Policy</h3>
             <p className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light">
               We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy in the App and updating the &quot;Effective Date&quot; at the top.
             </p>
           </section>
 
-          {/* Section 10 */}
+          {/* Section 11 */}
           <section className="space-y-4 bg-white border border-[#2D5A27]/10 p-6 sm:p-8 rounded-[24px]">
-            <h3 className="font-serif text-xl font-bold text-[#1C1C1C] m-0">10. Contact Us</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1C1C1C] m-0">11. Contact Us</h3>
             <p className="text-xs sm:text-sm text-[#2B2927]/70 font-light">
               If you have any questions or concerns regarding this Privacy Policy, please contact us at:
             </p>
