@@ -23,7 +23,19 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [];
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.apanacampus.com',
+          },
+        ],
+        destination: 'https://apanacampus.com/:path*',
+        permanent: true,
+      },
+    ];
   },
 };
 
