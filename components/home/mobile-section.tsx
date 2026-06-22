@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const outerFeatures = [
@@ -27,21 +27,6 @@ const innerPersonas = [
 const personaRadius = [210, 170, 170];
 
 const appFeatures = [
-  {
-    id: "students",
-    title: "Students",
-    image: "/students-dashboard.png",
-    icon: "🎓",
-    color: "#3B82F6",
-    tagline: "Student Dashboard",
-    description: "Students and parents get a comprehensive view of their academic journey. Keep track of daily progress, attendance, homework, and performance reports directly on your mobile device.",
-    bulletPoints: [
-      "Real-time homework & assignment updates",
-      "Instant attendance status with monthly stats",
-      "Teacher's remarks & performance charts",
-      "Digital report cards and progress history"
-    ]
-  },
   {
     id: "staff",
     title: "Staff & Teachers",
@@ -73,24 +58,9 @@ const appFeatures = [
     ]
   },
   {
-    id: "academics",
-    title: "Academic",
-    image: "/academic-dashboard.png",
-    icon: "📚",
-    color: "#10B981",
-    tagline: "Curriculum Tracking",
-    description: "Track progress of class lessons, syllabus completion, and daily academic schedules. Stay synced with teaching goals and milestones.",
-    bulletPoints: [
-      "Syllabus status and lesson plans visibility",
-      "Daily classwork updates for students",
-      "Resource sharing (documents, videos, links)",
-      "Substitute teacher management updates"
-    ]
-  },
-  {
     id: "fees",
     title: "Fees",
-    image: "/fees-dashboard.png",
+    image: "/mobile-fees.png",
     icon: "💳",
     color: "#F59E0B",
     tagline: "Online Payments",
@@ -105,7 +75,7 @@ const appFeatures = [
   {
     id: "exams",
     title: "Exams",
-    image: "/examination-dashboard.png",
+    image: "/mobile-exams.png",
     icon: "✍️",
     color: "#EF4444",
     tagline: "Result Publishing",
@@ -120,7 +90,7 @@ const appFeatures = [
   {
     id: "timetable",
     title: "Timetable",
-    image: "/timetable-dashboard.png",
+    image: "/mobile-timetable.png",
     icon: "🕒",
     color: "#8B5CF6",
     tagline: "Schedule Manager",
@@ -135,7 +105,7 @@ const appFeatures = [
   {
     id: "calendar",
     title: "Calendar",
-    image: "/calendar-dashboard.png",
+    image: "/mobile-calendar.png",
     icon: "📅",
     color: "#EC4899",
     tagline: "Events & Holidays",
@@ -164,32 +134,47 @@ const appFeatures = [
   },
   {
     id: "settings",
-    title: "Settings",
-    image: "/settings-dashboard.png",
+    title: "Settings & Profile",
+    image: "/mobile-profile.png",
     icon: "⚙️",
     color: "#6B7280",
-    tagline: "Preferences",
-    description: "Quickly switch between sibling accounts for parents, configure push alerts, edit profile details, and set up biometric or secure login details.",
+    tagline: "Student Profile",
+    description: "View and verify registration numbers, email IDs, contact numbers, date of birth, gender, and school document attachments easily.",
     bulletPoints: [
-      "Easy sibling profile switching for parents",
-      "Notification preferences (SMS, Email, Push)",
-      "Secure password management & PIN login",
-      "Theme choices & language selector"
+      "Check registration number (e.g. REG2026006)",
+      "View pupil biodata details (Priya Patel, Nursery - A)",
+      "Access address, parental data, and document tabs",
+      "Secure student information privacy boundaries"
     ]
   },
   {
-    id: "admin",
-    title: "Admin Mobile",
-    image: "/mobile-manage.jpg",
-    icon: "📱",
-    color: "#6366F1",
-    tagline: "Management Console",
-    description: "Admins can oversee operational stats, view live registration count, approve leave request applications, and control general system features.",
+    id: "bus-tracking",
+    title: "Bus Live Tracking",
+    image: "/mobile-bus-tracking.png",
+    icon: "🚌",
+    color: "#D97706",
+    tagline: "GPS Route Tracker",
+    description: "Parents can track school buses in real-time, view stops, check trip status, and dial driver contact numbers directly.",
     bulletPoints: [
-      "Daily admission counters & registration updates",
-      "Instant system-wide push notification broadcasting",
-      "Approve leave requests and staff permissions",
-      "Live collection and attendance tracking dashboard"
+      "Live GPS coordinates rendering on maps",
+      "Trip status reports (Not Started, In Progress, Delayed)",
+      "Direct driver call button for parents",
+      "Complete stops checklist and estimated arrival times (ETA)"
+    ]
+  },
+  {
+    id: "notice-board",
+    title: "Notice Board",
+    image: "/mobile-notice-board.png",
+    icon: "📢",
+    color: "#3B82F6",
+    tagline: "Instant Announcements",
+    description: "Stay in sync with holiday declarations, parent-teacher meetings, and general circular announcements sent from school admins.",
+    bulletPoints: [
+      "Detailed holiday notices (e.g. tomorrow holiday details)",
+      "Keyword-based notice search bar features",
+      "View notice attachments and URL links instantly",
+      "Direct push notification sync for urgent circulars"
     ]
   }
 ];
@@ -197,7 +182,19 @@ const appFeatures = [
 export default function MobileSection() {
   const [scale, setScale] = useState(1);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState('students');
+  const [activeTab, setActiveTab] = useState('staff');
+  const mobileTabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  useEffect(() => {
+    const activeTabElement = mobileTabRefs.current[activeTab];
+    if (activeTabElement) {
+      activeTabElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }, [activeTab]);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
   const [faceScanState, setFaceScanState] = useState<'idle' | 'scanning' | 'success' | 'scanning2' | 'already_marked'>('idle');
 
@@ -225,12 +222,15 @@ export default function MobileSection() {
     if (lowerNode.includes("student")) return "/students-dashboard.png";
     if (lowerNode.includes("teacher") || lowerNode.includes("staff")) return "/staff-dashboard.png";
     if (lowerNode.includes("parent")) return "/students-dashboard.png";
-    if (lowerNode.includes("fee")) return "/fees-dashboard.png";
-    if (lowerNode.includes("exam") || lowerNode.includes("result") || lowerNode.includes("report")) return "/examination-dashboard.png";
-    if (lowerNode.includes("time table") || lowerNode.includes("timetable")) return "/timetable-dashboard.png";
-    if (lowerNode.includes("calendar")) return "/calendar-dashboard.png";
+    if (lowerNode.includes("fee")) return "/mobile-fees.png";
+    if (lowerNode.includes("exam") || lowerNode.includes("result") || lowerNode.includes("report")) return "/mobile-exams.png";
+    if (lowerNode.includes("time table") || lowerNode.includes("timetable")) return "/mobile-timetable.png";
+    if (lowerNode.includes("calendar")) return "/mobile-calendar.png";
     if (lowerNode.includes("admission") || lowerNode.includes("registration")) return "/mobile-manage.jpg";
     if (lowerNode.includes("academic") || lowerNode.includes("lms")) return "/academic-dashboard.png";
+    if (lowerNode.includes("transport") || lowerNode.includes("bus")) return "/mobile-bus-tracking.png";
+    if (lowerNode.includes("notice")) return "/mobile-notice-board.png";
+    if (lowerNode.includes("settings") || lowerNode.includes("profile")) return "/mobile-profile.png";
     return "/mobile-dashboard-priya.jpg";
   };
 
@@ -508,6 +508,7 @@ export default function MobileSection() {
               return (
                 <button
                   key={feat.id}
+                  ref={(el) => { mobileTabRefs.current[feat.id] = el; }}
                   onClick={() => setActiveTab(feat.id)}
                   style={{
                     borderColor: isActive ? feat.color : 'rgba(43,41,39,0.1)',
