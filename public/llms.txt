@@ -1,0 +1,16 @@
+# ApanaCampus - School & College Management ERP Software
+> ApanaCampus is an affordable, secure, and multi-tenant School and College Management ERP Software in India. It features native PostgreSQL Schema Isolation to secure institutional records, built-in Mobile Face ID for attendance tracking, and automates fee collection, timetables, exams, and payroll.
+
+## Core Pages & Navigation
+- [Home Page](/): Landing page with high-level features overview, mobile app ecosystem, and support FAQs.
+- [All Features & Modules](/features): In-depth view of the 9 ERP core administrative dashboard modules (Students, Staff, Academic, Fees, Timetable, Calendar, Examination, Reports, and Settings).
+- [Subscription Pricing Plans](/pricing): Standard tiered pricing details (Basic, Advanced, and Enterprise custom plans) for monthly and yearly billing.
+- [Smart Comparison Map](/compare): Comparative analysis of ApanaCampus vs traditional school ERP systems like Fedena, Eduma, etc., highlighting savings and architecture.
+- [Mobile Apps Ecosystem](/mobile): Information about unified stakeholder apps (for Admins, Teachers, Students, and Parents) and built-in Face ID attendance.
+- [Security & Schema Isolation](/security): Technical architecture details explaining how native PostgreSQL schemas physically isolate database records for each school.
+- [Blog & EdTech Insights](/blog): Educational technology trends, guides, software updates, and tips.
+- [Contact Sales & Support](/contact): Contact numbers, WhatsApp channel, and demo request gateway.
+
+## Related Resources
+- [Full Text/Documentation](/llms-full.txt): Complete, flattened single-page markdown containing all product manuals, pricing charts, comparison parameters, and FAQs for LLM ingestion.
+- [XML Sitemap](/sitemap.xml): XML listing of all indexable pages for search engines.

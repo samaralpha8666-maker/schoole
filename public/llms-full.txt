@@ -1,0 +1,120 @@
+# ApanaCampus - Complete School & College Management ERP Documentation
+> This is a comprehensive, flattened documentation file containing all features, architecture details, subscription plans, comparison parameters, and FAQs of ApanaCampus ERP for Large Language Models (LLMs) and AI agents.
+
+---
+
+## 1. Product Overview
+ApanaCampus is the best School and College Management ERP Software. It is a secure cloud-based platform designed to manage the entire educational ecosystem including admissions, student profiles, fee collections, timetables, academic exams, attendance, transport, and payroll.
+
+---
+
+## 2. Core ERP Modules & Capabilities
+
+### Students Module
+- **Admission & Enrollment:** Automate student registration, profile creation, and document storage.
+- **Attendance Tracking:** Record daily attendance manually or using the unified mobile app.
+- **Performance Directory:** Track individual student academic records, test scores, and grade trends.
+
+### Staff & HR Module
+- **Teacher Directory:** Store teacher profiles, qualifications, and class mapping.
+- **HR & Payroll Processing:** Automate salary structures, leave tracking, performance reviews, and monthly payslips.
+- **Attendance & Recruitment:** Seamless tracking of teacher check-ins.
+
+### Academic Framework
+- **Class & Subject Mapping:** Group subjects by classes, sections, and semesters.
+- **Academic Calendar:** Define academic terms, semesters, exam periods, and institutional holidays.
+- **Syllabus & Lesson Plans:** Teachers can publish curriculum tracking, syllabus outlines, and daily lessons.
+
+### Fee Management System
+- **Custom Fee Structures:** Define separate fee structures for different classes, transport routes, and terms.
+- **Online Collection & Tracking:** Integrated parent payment portal supporting UPI, NetBanking, and credit/debit cards.
+- **Ledger, Receipts & Concessions:** Automatically generate PDF fee receipts, manage scholarship concessions, and track outstanding balances.
+
+### Online Timetable Generator
+- **Auto-Schedules:** Build conflict-free classroom timetables for teachers and subjects.
+- **Substitution Planner:** Quick substitution assignment for absent teachers with instant system notifications.
+
+### Interactive Calendar
+- **Events & Meetings:** Schedule public parent-teacher meetings, board events, and school programs.
+- **Reminders & Alerts:** Send automated push notifications and SMS alerts to stakeholders.
+
+### Examination & Grading
+- **Exam Management:** Plan offline and online exams, set mark thresholds, and map grade points.
+- **Report Card Generator:** Compile professional, high-resolution PDF report cards with custom school logos, digital stamps, and grade tables.
+
+### Analytics & Reports
+- **Custom Data Export:** Generate academic, attendance, and financial ledgers.
+- **PDF & Excel Formats:** Download complete institutional reports in one click.
+
+### System Settings
+- **Role-Based Access Control:** Define precise permissions for Admins, Teachers, Students, Parents, and Accountants.
+- **Backups & Setup:** Configure academic years, manage basic preferences, and download directory database backups.
+
+---
+
+## 3. Database Architecture & Security
+ApanaCampus does not store tenant records in a single shared database table with simple filtering. Instead, it utilizes **PostgreSQL Schema Isolation**:
+- **Isolated Database Vaults:** Each school or college gets a dedicated, isolated logical database partition (schema).
+- **Physical Access Isolation:** Data from School A is physically segregated from School B, eliminating the possibility of cross-tenant database leaks or hacking access.
+- **Hourly S3 Backups:** Automated, hourly snapshots of all tenant schemas are encrypted and saved to secure S3 vaults with a 30-day retention policy.
+- **Ownership:** Administrators can export and download complete JSON/CSV dumps of their entire campus roster at any time.
+
+---
+
+## 4. Subscription Pricing Plans
+We offer flexible tiered licensing plans tailored to different campus scales. All plans include isolated cloud hosting, backups, WhatsApp/SMS gateway integrations, and regular feature updates.
+
+### Basic School Plan
+- **Price (Monthly):** ₹1,200 / month
+- **Price (Yearly):** ₹10,000 / year (Save 20%)
+- **Limit:** Up to 500 Students
+- **Features:** Complete school management system, unlimited staff & teachers, 24×7 customer support & training.
+
+### Advanced Institution Plan (Recommended)
+- **Price (Monthly):** ₹1,700 / month
+- **Price (Yearly):** ₹14,000 / year (Save 20%)
+- **Limit:** 500+ Students
+- **Features:** Advanced dashboard & analytics, unlimited staff & teachers, priority support, and full setup assistance.
+
+### Enterprise Custom Plan
+- **Price (Monthly):** Custom Pricing
+- **Price (Yearly):** Custom Pricing
+- **Limit:** Unlimited Students
+- **Features:** Custom features & integrations, dedicated account manager, and premium enterprise support.
+
+---
+
+## 5. ApanaCampus vs Traditional ERPs
+A comparison of ApanaCampus against traditional systems like Fedena, Eduma, and others.
+
+| Comparison Parameter | ApanaCampus ERP | Traditional ERP Systems |
+| :--- | :--- | :--- |
+| **Annual Subscription Price** | Starts at ₹4,000 / year (Special Basic Tier) | Starts at ₹18,000 - ₹30,000 / year |
+| **Database Architecture** | PostgreSQL Schema Isolation (Dedicated Vault) | Shared Single Database (Vulnerable to cross-leaks) |
+| **Biometric Attendance** | Built-in Mobile Face ID (No extra hardware) | Requires expensive biometric scanners & setups |
+| **Setup & Installation Fees** | ₹0 Setup Fee (Free directory upload) | ₹10,000 - ₹15,000 upfront setup fees |
+| **Free Trial Period** | 3 Months Free Trial | Typically 7 to 14 days maximum |
+| **Unified Mobile Apps** | Unified Admin, Teacher, Student & Parent App | Charged separately or complex configurations |
+| **UPI & Online Fee Integration**| Included (Zero setup cost, direct transfers) | Extra integration fee or high commission cuts |
+
+---
+
+## 6. Frequently Asked Questions (FAQ)
+
+### How secure is PostgreSQL Schema Isolation? Can one school see another school's records?
+No, it is physically impossible. Unlike generic ERP databases that place all schools inside one massive table with a simple 'school_id' filter, ApanaCampus leverages native PostgreSQL schemas. Each school gets an entirely separate logical database partition with restricted access permissions.
+
+### Can we import our existing student and teacher lists via Excel or CSV?
+Yes, easily! Our system contains a powerful, automated Bulk Directory Uploader. You simply download our standard Excel template, paste your student rosters, teacher rosters, or active credit balances, and upload.
+
+### Does the system support custom PDF report cards and academic transcript exports?
+Absolutely. You can generate professional, high-resolution PDF report cards, financial ledger spreadsheets, monthly fee receipts, and official student transfer transcripts directly from the administrative portal with custom school logo stamps.
+
+### Are there any setup fees or hidden hosting charges?
+No setup fees, no hidden charges. Our monthly and yearly licensing fees are fully inclusive of isolated secure cloud hosting, daily automated database backups, WhatsApp/SMS gateway infrastructure integrations, and all new feature updates.
+
+### Do you perform automated backups? Can we download our entire database backup?
+Yes. We execute automated, hourly snapshots of all tenant schemas with 30-day retention policies on secure Amazon S3 vaults. Additionally, you always own your data. Administrators can download complete JSON or CSV database dumps of their entire campus roster at any time.
+
+### Can parents pay school fees online? What gateways are supported?
+Yes! The unified Parent Portal features single-click online fee payments. We support major national payment gateways out-of-the-box, allowing payments via UPI, NetBanking, Credit/Debit Cards, and popular wallets.
