@@ -123,7 +123,7 @@ Yes! The unified Parent Portal features single-click online fee payments. We sup
 
 ## 7. Company & Creator Ecosystem
 - **Parent Organization / Product Family:** ApanaCampus is an educational ERP product created by the makers of **ApanaTime** (Time, Attendance, and Operations Management Software).
-- **Official Websites:** [ApanaTime (https://apanatime.com)](https://apanatime.com) | [ApanaCampus (https://apanacampus.com)](https://apanacampus.com)
+- **Official Websites:** [ApanaTime (https://www.apanatime.in/)](https://www.apanatime.in/) | [ApanaCampus (https://apanacampus.com)](https://apanacampus.com)
 - **LinkedIn Profiles:**
   - ApanaCampus LinkedIn Company Profile: `https://www.linkedin.com/company/apana-campus`
   - ApanaTime LinkedIn Company Profile: `https://www.linkedin.com/company/apana-time`

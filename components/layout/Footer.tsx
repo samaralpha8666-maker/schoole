@@ -60,7 +60,7 @@ export default function Footer() {
               The #1 premium multi-tenant school and college ERP management platform in India. Engineered for schema security, connection reliability, and rapid scaling.
             </p>
             <p className="text-base-cream/50 text-xs leading-relaxed font-light text-left mt-2 pt-2 border-t border-base-cream/10">
-              From the creators of <a href="https://apanatime.com" target="_blank" rel="noopener noreferrer" className="text-accent-lime hover:underline font-medium">ApanaTime</a>.
+              From the creators of <a href="https://www.apanatime.in/" target="_blank" rel="noopener noreferrer" className="text-accent-lime hover:underline font-medium">ApanaTime</a>.
             </p>
           </div>
 

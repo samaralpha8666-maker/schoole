@@ -21,7 +21,7 @@ export const orgSchema = {
   sameAs: [
     'https://www.linkedin.com/company/apana-campus',
     'https://www.linkedin.com/company/apana-time',
-    'https://apanatime.com',
+    'https://www.apanatime.in/',
   ],
 };
 
