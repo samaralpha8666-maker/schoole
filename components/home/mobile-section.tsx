@@ -45,16 +45,16 @@ const appFeatures = [
   {
     id: "staff",
     title: "Staff & Teachers",
-    image: "/staff-dashboard.png",
+    image: "/teacher-classes-dashboard.png",
     icon: "👩‍🏫",
     color: "#F97316",
-    tagline: "Classroom Management",
-    description: "Empower teachers with tools to manage classrooms on the go. Reduce administrative overhead, mark attendance quickly, and interact with parents directly.",
+    tagline: "Teacher Dashboard",
+    description: "Empower teachers with a comprehensive classes management dashboard. Handle daily lesson schedules, track syllabus completion, mark attendance (manual or Face ID), assign homework, and post academic results instantly.",
     bulletPoints: [
-      "Quick attendance marking in less than 30 seconds",
-      "Assign and grade homework directly from mobile",
-      "Direct communication channel with parents",
-      "Publish exam marks and remarks instantaneously"
+      "Manage class timetables, syllabus trackers, and plans",
+      "Mark attendance instantly with built-in Face ID checks",
+      "Upload classroom homework assignments and add test results",
+      "Request leave, review schedules, and publish announcements"
     ]
   },
   {

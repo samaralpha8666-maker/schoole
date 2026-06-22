@@ -52,20 +52,32 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* ── 2. SINGLE STRAIGHT IPHONE 16 PRO MOCKUP (Clean, High-Fidelity & Responsive) ── */}
-          <div className="absolute right-[-15px] sm:right-[-30px] bottom-[-20px] w-[110px] sm:w-[150px] aspect-[393/852] rounded-[28px] bg-[#0c0c0d] p-[3px] sm:p-[4.5px] ring-1 ring-white/10 ring-inset shadow-[0_20px_45px_rgba(0,0,0,0.4)] border-[1px] border-[#2b2b2c] z-20 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
-            {/* Ultra-thin Screen Frame */}
+          {/* ── 2. DUAL OVERLAPPING IPHONE 16 PRO MOCKUPS ── */}
+          {/* Phone 1: Teacher Home Screen (Left / Behind) */}
+          <div className="absolute right-[45px] sm:right-[80px] bottom-[-30px] w-[100px] sm:w-[140px] aspect-[393/852] rounded-[28px] bg-[#0c0c0d] p-[3px] sm:p-[4.5px] ring-1 ring-white/10 ring-inset shadow-[0_20px_40px_rgba(0,0,0,0.35)] border-[1px] border-[#2b2b2c] z-15 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
             <div className="relative w-full h-full rounded-[25px] overflow-hidden bg-white">
               {/* Dynamic Island */}
               <div className="absolute top-[6px] sm:top-[8px] left-1/2 -translate-x-1/2 w-[40px] sm:w-[56px] h-[8px] sm:h-[11px] bg-black rounded-[4px] sm:rounded-[6px] z-30" />
-
-              {/* Screen Content - Dashboard */}
               <Image
-                src="/mobile-dashboard-priya.jpg"
-                alt="Teacher ERP Attendance & Overview Dashboard"
+                src="/teacher-home-dashboard.png"
+                alt="Teacher ERP Home Overview"
                 fill
                 priority
-                unoptimized
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.01]"
+              />
+            </div>
+          </div>
+
+          {/* Phone 2: Teacher Manage Classes (Right / In Front) */}
+          <div className="absolute right-[-15px] sm:right-[-25px] bottom-[-15px] w-[105px] sm:w-[145px] aspect-[393/852] rounded-[28px] bg-[#0c0c0d] p-[3px] sm:p-[4.5px] ring-1 ring-white/10 ring-inset shadow-[0_25px_50px_rgba(0,0,0,0.4)] border-[1px] border-[#2b2b2c] z-20 transition-all duration-500 hover:-translate-y-2.5 hover:scale-[1.02] group">
+            <div className="relative w-full h-full rounded-[25px] overflow-hidden bg-white">
+              {/* Dynamic Island */}
+              <div className="absolute top-[6px] sm:top-[8px] left-1/2 -translate-x-1/2 w-[40px] sm:w-[56px] h-[8px] sm:h-[11px] bg-black rounded-[4px] sm:rounded-[6px] z-30" />
+              <Image
+                src="/teacher-classes-dashboard.png"
+                alt="Teacher ERP Classes Panel"
+                fill
+                priority
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.01]"
               />
             </div>
