@@ -30,7 +30,7 @@ const footerLinks = [
       { label: '+91 89285 67312', href: 'tel:+918928567312' },
       { label: 'hello@apanacampus.com', href: 'mailto:hello@apanacampus.com' },
       { label: 'hr@apanatime.in', href: 'mailto:hr@apanatime.in' },
-      { label: 'Google Play Store', href: 'https://play.google.com', external: true },
+      { label: 'Google Play Store', href: 'https://play.google.com/store/apps/details?id=com.apanacampus.erp', external: true },
       { label: 'Campus LinkedIn', href: 'https://www.linkedin.com/company/apana-campus/about/?viewAsMember=true', external: true },
       { label: 'ApanaTime LinkedIn', href: 'https://www.linkedin.com/company/apana-time', external: true },
     ],

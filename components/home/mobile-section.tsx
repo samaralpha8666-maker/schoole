@@ -58,6 +58,21 @@ const appFeatures = [
     ]
   },
   {
+    id: "face-attendance",
+    title: "Face ID Attendance",
+    image: "/face-attendance-teacher.png",
+    icon: "📸",
+    color: "#2D5A27",
+    tagline: "AI Biometric Check-In",
+    description: "Implement touchless, AI-powered Face ID attendance for teachers and staff. Eliminate buddy punching and proxy clock-ins using secure facial encodings processed directly inside our schema-isolated PostgreSQL database.",
+    bulletPoints: [
+      "Zero Hardware Cost - works on any mobile or tablet",
+      "GPS Geofencing - check-in only inside school borders",
+      "GDPR Compliant - vector numerical facial signatures",
+      "Offline Sync - marks attendance without stable internet"
+    ]
+  },
+  {
     id: "academics",
     title: "Academic",
     image: "/academic-dashboard.png",
@@ -184,6 +199,23 @@ export default function MobileSection() {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('students');
   const [zoomImage, setZoomImage] = useState<string | null>(null);
+  const [faceScanState, setFaceScanState] = useState<'idle' | 'scanning' | 'success' | 'scanning2' | 'already_marked'>('idle');
+
+  const triggerFaceScan = () => {
+    if (faceScanState === 'idle') {
+      setFaceScanState('scanning');
+      setTimeout(() => {
+        setFaceScanState('success');
+      }, 1800);
+    } else if (faceScanState === 'success') {
+      setFaceScanState('scanning2');
+      setTimeout(() => {
+        setFaceScanState('already_marked');
+      }, 1800);
+    } else {
+      setFaceScanState('idle');
+    }
+  };
 
   const activeFeature = appFeatures.find(f => f.id === activeTab) || appFeatures[0];
 
@@ -299,6 +331,14 @@ export default function MobileSection() {
               .scrollbar-none {
                 -ms-overflow-style: none;
                 scrollbar-width: none;
+              }
+              @keyframes scan-line {
+                0% { top: 0%; }
+                50% { top: 100%; }
+                100% { top: 0%; }
+              }
+              .animate-scan-line {
+                animation: scan-line 2.2s ease-in-out infinite;
               }
             `}</style>
 
@@ -564,6 +604,199 @@ export default function MobileSection() {
                       className="object-cover object-top animate-fade-in-up"
                     />
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Special USP Highlight: AI-Powered Face Attendance */}
+        <div className="bg-[#E2EBD5]/30 border border-[#2D5A27]/15 rounded-[32px] p-8 sm:p-12 mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
+          <div className="lg:col-span-7 space-y-6">
+            <span className="inline-flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-[#2D5A27] bg-[#E2EBD5] border border-[#2D5A27]/20 px-3.5 py-1.5 rounded-full">
+              ✨ Industry First Feature
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1C1C1C] font-normal leading-tight">
+              Say Goodbye to Expensive Biometric Machines
+            </h3>
+            <p className="text-[#2B2927]/80 text-sm sm:text-base font-light leading-relaxed">
+              ApanaCampus integrates high-precision **AI Face Recognition Attendance** directly inside the teacher's mobile application. It utilizes local camera feeds to scan and match double-precision facial encoding arrays, backed by strict geographic boundary checks (GPS Geofencing).
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+              <div className="space-y-1.5">
+                <h4 className="font-serif text-base font-bold text-[#1C1C1C]">Zero Hardware Investment</h4>
+                <p className="text-xs text-[#2B2927]/70 font-light leading-relaxed">
+                  No need to purchase expensive fingerprint scanner devices, wall mounts, or RFID cards. Teachers can check in securely using their own smartphones.
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="font-serif text-base font-bold text-[#1C1C1C]">100% Anti-Proxy Security</h4>
+                <p className="text-xs text-[#2B2927]/70 font-light leading-relaxed">
+                  Eliminates buddy punching entirely. Facial features are converted into encrypted numeric vectors, ensuring zero duplicate or proxy attendance marks.
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="font-serif text-base font-bold text-[#1C1C1C]">Privacy Safeguarded</h4>
+                <p className="text-xs text-[#2B2927]/70 font-light leading-relaxed">
+                  We value user privacy. The system processes facial images locally to generate a mathematical vector representation. No raw photographs are stored permanently.
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="font-serif text-base font-bold text-[#1C1C1C]">Automated Payroll Sync</h4>
+                <p className="text-xs text-[#2B2927]/70 font-light leading-relaxed">
+                  Clock-in and clock-out logs are synced instantly to the administrative dashboard, updating salary calculations, late-arrival limits, and leave cuts automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="lg:col-span-5 flex justify-center">
+            {/* Interactive Phone Simulator */}
+            <div 
+              className="relative w-[250px] sm:w-[285px] aspect-[393/852] rounded-[44px] bg-[#0c0c0d] p-[6.5px] ring-1 ring-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.3)] border-[2.5px] border-[#2d2d2f]"
+            >
+              {/* iPhone Screen Container */}
+              <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-[#0A0D18] flex flex-col select-none font-sans text-white text-left">
+                {/* Dynamic Island */}
+                <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[80px] h-[16px] bg-black rounded-[8px] z-50" />
+
+                {/* Glass reflection overlay */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/0 via-white/5 to-white/10 z-40" />
+
+                {/* App Header */}
+                <div className="pt-9 pb-3.5 px-4 flex items-center justify-between border-b border-white/[0.04] bg-[#0F172A]/40">
+                  <button className="text-white/80 hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <span className="text-[13px] font-bold tracking-wide">Face Attendance</span>
+                  <div className="w-5 h-5" /> {/* Spacer */}
+                </div>
+
+                {/* App Content */}
+                <div className="flex-1 flex flex-col items-center pt-8 px-4 relative">
+                  <h4 className="text-[15px] font-bold text-center tracking-wide text-slate-100">Live Face Verification</h4>
+                  <p className="text-[9.5px] text-center text-slate-400 mt-1.5 leading-relaxed px-2">
+                    Align your face inside the circle. Verification will run automatically for all registered teachers.
+                  </p>
+
+                  {/* Face Scanner Ring */}
+                  <div className="mt-12 relative flex items-center justify-center">
+                    <div 
+                      style={{
+                        borderColor: 
+                          faceScanState === 'success' 
+                            ? '#10B981' 
+                            : faceScanState === 'already_marked' 
+                            ? '#D97706' 
+                            : '#C5A862',
+                        boxShadow: 
+                          faceScanState === 'scanning' || faceScanState === 'scanning2'
+                            ? '0 0 20px rgba(197, 168, 98, 0.4)'
+                            : faceScanState === 'success'
+                            ? '0 0 25px rgba(16, 185, 129, 0.3)'
+                            : faceScanState === 'already_marked'
+                            ? '0 0 25px rgba(217, 119, 6, 0.3)'
+                            : 'none'
+                      }}
+                      className={`w-36 h-36 rounded-full border-[3px] relative overflow-hidden transition-all duration-300 flex items-center justify-center ${
+                        faceScanState === 'scanning' || faceScanState === 'scanning2' ? 'animate-pulse' : ''
+                      }`}
+                    >
+                      {/* Real Teacher Image / Avatar Mesh */}
+                      <div className="absolute inset-0 bg-[#0F172A]">
+                        {/* We use a stylized high tech mesh or can overlay teacher face preview */}
+                        <Image
+                          src="/face-attendance-teacher.png"
+                          alt="Face Preview"
+                          fill
+                          sizes="160px"
+                          className={`object-cover object-top transition-opacity duration-300 ${
+                            faceScanState === 'idle' ? 'opacity-40 grayscale-[40%]' : 'opacity-85'
+                          }`}
+                        />
+                        {/* High tech grid mesh overlay */}
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:10px_10px] opacity-30" />
+                      </div>
+
+                      {/* Moving laser scan line */}
+                      {(faceScanState === 'scanning' || faceScanState === 'scanning2') && (
+                        <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A862] to-transparent shadow-[0_0_8px_#C5A862] animate-scan-line z-20" />
+                      )}
+
+                      {/* Success Overlays */}
+                      {faceScanState === 'success' && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-emerald-950/70 backdrop-blur-[1px] animate-fade-in z-30">
+                          <div className="w-10 h-10 rounded-full bg-emerald-500/20 border-2 border-emerald-400 flex items-center justify-center animate-pulse">
+                            <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Already Marked Alert Overlay */}
+                      {faceScanState === 'already_marked' && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-amber-950/70 backdrop-blur-[1px] animate-fade-in z-30">
+                          <div className="w-10 h-10 rounded-full bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center">
+                            <svg className="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Status Banner Output (Matching Screenshot) */}
+                  {faceScanState === 'success' && (
+                    <div className="absolute bottom-6 inset-x-3 bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-3 rounded-xl flex items-center gap-3 animate-fade-in">
+                      <div className="w-5 h-5 rounded-full bg-emerald-400/20 flex items-center justify-center shrink-0">
+                        <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-emerald-100 text-[11px] font-bold leading-none">Attendance Marked</span>
+                        <span className="text-[9.5px] text-emerald-300/80 mt-1 font-medium">Verified for Priya successfully</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {faceScanState === 'already_marked' && (
+                    <div className="absolute bottom-6 inset-x-3 bg-[#1c1613] border border-[#d97706]/40 px-3.5 py-3 rounded-xl flex items-center gap-2.5 animate-fade-in">
+                      <svg className="w-5 h-5 text-[#d97706] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      <span className="text-amber-100/90 text-[10.5px] font-medium leading-snug">
+                        Attendance already marked for priya
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Interactive Simulator Footer Trigger Button */}
+                <div className="p-4 bg-[#0F172A]/40 border-t border-white/[0.04] text-center">
+                  <button 
+                    onClick={triggerFaceScan}
+                    style={{
+                      backgroundColor: 
+                        faceScanState === 'success' 
+                          ? '#10B981' 
+                          : faceScanState === 'already_marked' 
+                          ? '#3B82F6' 
+                          : '#C5A862'
+                    }}
+                    className="w-full py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-lg hover:brightness-105 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    {faceScanState === 'idle' && "Simulate Face Scan"}
+                    {faceScanState === 'scanning' && "Analyzing..."}
+                    {faceScanState === 'success' && "Scan Again (Test Duplicate)"}
+                    {faceScanState === 'scanning2' && "Checking..."}
+                    {faceScanState === 'already_marked' && "Reset Simulator"}
+                  </button>
                 </div>
               </div>
             </div>

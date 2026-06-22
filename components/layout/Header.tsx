@@ -161,7 +161,7 @@ export default function Header() {
                 text-[9.5px] tracking-[1.2px] uppercase
                 text-[#2D5A27] font-bold mt-[3px]
               ">
-                School & Collage Management ERP
+                School & College Management ERP
               </span>
             </div>
           </Link>
