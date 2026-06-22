@@ -217,7 +217,7 @@ export default function MobileSection() {
   const activeFeature = appFeatures.find(f => f.id === activeTab) || appFeatures[0];
 
   const getCentralImage = () => {
-    if (!hoveredNode) return "/mobile-dashboard-priya.jpg";
+    if (!hoveredNode) return "/mobile-dashboard.png";
     const lowerNode = hoveredNode.toLowerCase();
     if (lowerNode.includes("student")) return "/students-dashboard.png";
     if (lowerNode.includes("teacher") || lowerNode.includes("staff")) return "/staff-dashboard.png";
@@ -231,7 +231,7 @@ export default function MobileSection() {
     if (lowerNode.includes("transport") || lowerNode.includes("bus")) return "/mobile-bus-tracking.png";
     if (lowerNode.includes("notice")) return "/mobile-notice-board.png";
     if (lowerNode.includes("settings") || lowerNode.includes("profile")) return "/mobile-profile.png";
-    return "/mobile-dashboard-priya.jpg";
+    return "/mobile-dashboard.png";
   };
 
   useEffect(() => {
