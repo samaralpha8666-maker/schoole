@@ -18,6 +18,11 @@ export const orgSchema = {
     contactType: 'sales',
     availableLanguage: ['Hindi', 'English'],
   },
+  sameAs: [
+    'https://www.linkedin.com/company/apana-campus',
+    'https://www.linkedin.com/company/apana-time',
+    'https://apanatime.com',
+  ],
 };
 
 // Software application schema

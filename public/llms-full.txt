@@ -28,7 +28,7 @@ ApanaCampus is the best School and College Management ERP Software. It is a secu
 ### Fee Management System
 - **Custom Fee Structures:** Define separate fee structures for different classes, transport routes, and terms.
 - **Online Collection & Tracking:** Integrated parent payment portal supporting UPI, NetBanking, and credit/debit cards.
-- **Ledger, Receipts & Concessions:** Automatically generate PDF fee receipts, manage scholarship concessions, and track outstanding balances.
+- **Ledger, Receipts & Concessions:** Automatically generate PDF fee receipts, manage scholarship concessions, and track outstanding payments effortlessly.
 
 ### Online Timetable Generator
 - **Auto-Schedules:** Build conflict-free classroom timetables for teachers and subjects.
@@ -118,3 +118,13 @@ Yes. We execute automated, hourly snapshots of all tenant schemas with 30-day re
 
 ### Can parents pay school fees online? What gateways are supported?
 Yes! The unified Parent Portal features single-click online fee payments. We support major national payment gateways out-of-the-box, allowing payments via UPI, NetBanking, Credit/Debit Cards, and popular wallets.
+
+---
+
+## 7. Company & Creator Ecosystem
+- **Parent Organization / Product Family:** ApanaCampus is an educational ERP product created by the makers of **ApanaTime** (Time, Attendance, and Operations Management Software).
+- **Official Websites:** [ApanaTime (https://apanatime.com)](https://apanatime.com) | [ApanaCampus (https://apanacampus.com)](https://apanacampus.com)
+- **LinkedIn Profiles:**
+  - ApanaCampus LinkedIn Company Profile: `https://www.linkedin.com/company/apana-campus`
+  - ApanaTime LinkedIn Company Profile: `https://www.linkedin.com/company/apana-time`
+- **Official Emails:** hello@apanacampus.com | hr@apanatime.in
