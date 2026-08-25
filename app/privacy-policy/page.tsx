@@ -109,7 +109,7 @@ export default function PrivacyPolicyPage() {
             </div>
             <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-3">
               <p>
-                To support institutional security, automated check-ins, and secure user verification, our App includes optional <strong>Face ID Registration and Face Attendance</strong> features for authorized teachers and staff members.
+                To support institutional security, automated check-ins, and secure user verification, our App includes optional <strong>Face ID Registration and Face Attendance</strong> features for authorized teachers, staff members, and students.
               </p>
               <ul className="list-disc list-inside space-y-2 pl-3">
                 <li>
@@ -119,13 +119,37 @@ export default function PrivacyPolicyPage() {
                   <strong>Data Processing & Storage (Facial Encodings):</strong> Captured photos are securely processed to compute a mathematical, numerical representation of your facial geometry (known as a &quot;face encoding&quot; or &quot;facial vector&quot;). We only store these mathematical encodings (<code>DOUBLE PRECISION[]</code>) in our secure, schema-isolated database. The raw photos are processed solely to generate the face encoding and are not permanently stored on our databases or shared.
                 </li>
                 <li>
-                  <strong>Purpose of Processing:</strong> Your face encoding is used exclusively to verify your identity when you clock in or clock out via the App, verifying that you are the registered employee and preventing proxy attendance.
+                  <strong>Purpose of Processing:</strong> Your face encoding is used exclusively to verify your identity when you clock in or clock out via the App, verifying that you are the registered user and preventing proxy attendance.
                 </li>
                 <li>
                   <strong>Third-Party Sharing:</strong> We do not sell, rent, lease, or share your biometric data or facial encodings with any third parties. Access is strictly restricted to your educational institution&apos;s administrators.
                 </li>
                 <li>
                   <strong>Consent, Retention & Deletion:</strong> Participation in Face Attendance is completely optional. You can withdraw your consent and delete your biometric data at any time. To purge your face registration and encodings, you can contact your school administrator or request deletion by emailing us at <strong>info@apanacampus.com</strong>.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 3.1 - Location Data & Background Tracking */}
+          <section className="space-y-4 border-b border-black/[0.05] pb-8 bg-[#E2EBD5]/10 p-5 rounded-[20px] border border-[#2D5A27]/5">
+            <div className="flex items-center gap-2.5">
+              <MapPin className="w-5 h-5 text-[#2D5A27]" />
+              <h3 className="font-serif text-xl font-bold text-[#2D5A27] m-0">3.1 Location Data & Background Tracking</h3>
+            </div>
+            <div className="text-xs sm:text-sm text-[#2B2927]/80 leading-relaxed font-light space-y-3">
+              <p>
+                To maintain institutional boundary security, verify geofenced attendance, and enable live bus route monitoring, our App accesses device location data (GPS) under the following conditions:
+              </p>
+              <ul className="list-disc list-inside space-y-2 pl-3">
+                <li>
+                  <strong>School Geofence Attendance Verification:</strong> When teachers or students mark attendance, we collect precise location data to verify that the user is physically present within the authorized school boundary radius.
+                </li>
+                <li>
+                  <strong>School Bus Live Fleet Tracking (Foreground & Background Location):</strong> In driver mode, location data is collected continuously—including in the background when the app is minimized or the screen is turned off—during an active bus trip initiated by the driver. This enables real-time bus route tracking on the parent dashboard and sends automated proximity alerts when the bus approaches a student&apos;s stop for child safety.
+                </li>
+                <li>
+                  <strong>Data Sharing & Confidentiality:</strong> Location data is never sold, rented, or shared with third-party advertisers. It is strictly shared in real time only with authorized parents and school administrators during active school bus trips.
                 </li>
               </ul>
             </div>
