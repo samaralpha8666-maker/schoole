@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroSection from '@/components/home/HeroSection';
+import ClientLogosSection from '@/components/home/ClientLogosSection';
 import ErpFeatures from '@/components/home/erp-features';
 import MobileSection from '@/components/home/mobile-section';
 import { SchemaIsolation } from '@/components/home/schema-isolation';
@@ -37,7 +38,10 @@ export default function HomePage() {
       {/* 1. Redesigned Premium Hero Section */}
       <HeroSection />
 
-      {/* 2.5. 14 Comprehensive ERP Core Modules */}
+      {/* 2. Real Verified Partner Institutions & Client Proof Showcase */}
+      <ClientLogosSection />
+
+      {/* 3. 14 Comprehensive ERP Core Modules */}
       <ErpFeatures />
 
       {/* 4. Integrated Stakeholder Mobile App Ecosystem */}

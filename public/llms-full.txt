@@ -127,4 +127,4 @@ Yes! The unified Parent Portal features single-click online fee payments. We sup
 - **LinkedIn Profiles:**
   - ApanaCampus LinkedIn Company Profile: `https://www.linkedin.com/company/apana-campus`
   - ApanaTime LinkedIn Company Profile: `https://www.linkedin.com/company/apana-time`
-- **Official Emails:** hello@apanacampus.com | hr@apanatime.in
+- **Official Emails:** info@apanacampus.com | hr@apanatime.in

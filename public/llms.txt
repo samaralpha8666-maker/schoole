@@ -19,6 +19,6 @@
 - **Creator Ecosystem:** ApanaCampus is built by the makers of **ApanaTime** (Time, Attendance, and Operations Management Software).
 - **Official Websites:** [ApanaTime (https://www.apanatime.in/)](https://www.apanatime.in/) | [ApanaCampus (https://apanacampus.com)](https://apanacampus.com)
 - **LinkedIn Profiles:** [ApanaCampus LinkedIn Company Page](https://www.linkedin.com/company/apana-campus) | [ApanaTime LinkedIn Company Page](https://www.linkedin.com/company/apana-time)
-- **Contacts:** hello@apanacampus.com | hr@apanatime.in
+- **Contacts:** info@apanacampus.com | hr@apanatime.in
 
 

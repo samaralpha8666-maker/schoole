@@ -455,7 +455,7 @@ export default function MobileSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 max-w-md mx-auto">
           {/* Google Play Button */}
           <a
-            href="https://play.google.com/store"
+            href="https://play.google.com/store/apps/details?id=com.apanacampus.erp"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all duration-200 w-64 hover:scale-[1.02] active:scale-[0.98]"

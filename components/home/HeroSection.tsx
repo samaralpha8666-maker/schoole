@@ -148,21 +148,110 @@ export default function HeroSection() {
           </li>
         </ul>
 
-        {/* Solid CTA button - strictly primary green (#2D5A27) with high hover states */}
-        <div className="pt-2">
+        {/* CTAs: Click Here & Google Play Store App */}
+        <div className="pt-2 flex flex-wrap items-center gap-3">
           <Link
             href="/#contact"
             className="
               inline-flex items-center justify-center
               bg-[#2D5A27] text-[#FAF9F6]
-              px-12 py-4.5 rounded-md
-              text-[13px] font-black tracking-[2.5px] uppercase
+              px-10 py-3.5 rounded-md
+              text-[13px] font-black tracking-[2px] uppercase
               hover:bg-[#1C1C1C] hover:scale-[1.02] active:scale-[0.98]
               transition-all duration-200 shadow-md shadow-[#2D5A27]/10
             "
           >
             Click Here
           </Link>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.apanacampus.erp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex items-center gap-2.5
+              bg-black text-white
+              px-5 py-2.5 rounded-md
+              border border-black/10 hover:bg-[#2D5A27]
+              hover:scale-[1.02] active:scale-[0.98]
+              transition-all duration-200 shadow-xs group
+            "
+            aria-label="Download ApanaCampus on Google Play Store"
+          >
+            <svg className="w-5 h-5 fill-current shrink-0 text-[#00E676] group-hover:text-white transition-colors" viewBox="0 0 24 24">
+              <path d="M5.25 2.1c-.26 0-.5.1-.68.28l10.97 10.97 3.51-3.51L5.93 2.38c-.18-.18-.42-.28-.68-.28zM3.48 3.84c-.1.21-.15.46-.15.73v14.86c0 .27.05.52.15.73l9.64-9.64L3.48 3.84zm12.33 7.82l-3.51 3.51 10.97 10.97c.18-.18.28-.42.28-.68 0-.26-.1-.5-.28-.68l-7.46-13.12zM13.62 12l-9.64 9.64c.21.1.46.15.73.15.26 0 .5-.1.68-.28l13.12-7.46-4.89-2.05z" />
+            </svg>
+            <div className="text-left font-sans leading-tight">
+              <span className="text-[8.5px] uppercase tracking-wider block text-white/70">GET IT ON</span>
+              <span className="text-[12.5px] font-black tracking-tight block">Google Play</span>
+            </div>
+          </a>
+        </div>
+
+        {/* Real Client Proof Social Strip */}
+        <div className="pt-4 border-t border-black/[0.08] flex items-center gap-3.5">
+          <div className="flex -space-x-2.5 items-center">
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-[#003366] bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5 z-20">
+              <Image
+                src="/clients/swift-group-colleges.png"
+                alt="Swift Group of Colleges (Punjab)"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-[#003366] bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5 z-10">
+              <Image
+                src="/clients/ses-ytcem-college.jpg"
+                alt="YTCEM Engineering College (Mumbai)"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-white bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5">
+              <Image
+                src="/clients/kg-public-school.jpg"
+                alt="K. G. Public School"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-white bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5">
+              <Image
+                src="/clients/indrawati-gurukul.jpg"
+                alt="Indrawati Gurukul"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-white bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5">
+              <Image
+                src="/clients/shyama-mall-inter-college.jpg"
+                alt="Shyama Mall Balika Inter College"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="w-[34px] h-[34px] rounded-full ring-2 ring-white bg-white shadow-xs overflow-hidden flex items-center justify-center p-0.5">
+              <Image
+                src="/clients/divyansh-coaching.jpg"
+                alt="Divyansh Coaching Center"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <div className="text-[12.5px] font-semibold text-[#1C1C1C]/80 leading-tight">
+            <div className="flex items-center gap-1 text-amber-500 text-[11px]">
+              ★★★★★ <span className="text-[#1C1C1C] font-bold">4.9/5</span>
+            </div>
+            <span>Trusted by <strong className="text-[#003366]">Premier Colleges</strong>, <strong className="text-[#2D5A27]">Schools &amp; Coaching</strong></span>
+          </div>
         </div>
 
 

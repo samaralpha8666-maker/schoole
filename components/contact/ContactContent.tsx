@@ -7,23 +7,20 @@ import {
   Sparkles, Calendar, Send, 
   ShieldCheck, HelpCircle, 
   ChevronRight, Loader2,
-  CheckCircle2, Building, KeyRound,
-  FileText
+  CheckCircle2, Building, KeyRound
 } from 'lucide-react';
 
 function ContactContent() {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<'demo' | 'support' | 'login'>('support');
+  const [activeTab, setActiveTab] = useState<'demo' | 'login'>('demo');
 
   // Handle URL action parameters (e.g., /contact?action=demo)
   useEffect(() => {
     const action = searchParams.get('action');
-    if (action === 'demo') {
-      setActiveTab('demo');
-    } else if (action === 'login') {
+    if (action === 'login') {
       setActiveTab('login');
     } else {
-      setActiveTab('support');
+      setActiveTab('demo');
     }
   }, [searchParams]);
 
@@ -35,15 +32,6 @@ function ContactContent() {
     email: '',
     strength: '',
     demoDate: '',
-  });
-
-  const [supportForm, setSupportForm] = useState({
-    name: '',
-    email: '',
-    schoolName: '',
-    subject: '',
-    priority: 'Medium',
-    message: '',
   });
 
   const [loginForm, setLoginForm] = useState({
@@ -58,11 +46,6 @@ function ContactContent() {
   const handleDemoChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setDemoForm(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSupportChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setSupportForm(prev => ({ ...prev, [name]: value }));
   };
 
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,47 +97,6 @@ function ContactContent() {
     }
   };
 
-  const handleSupportSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMsg('');
-
-    if (!supportForm.name.trim()) return setErrorMsg('Please enter your name.');
-    if (!supportForm.email.trim()) return setErrorMsg('Please enter your email.');
-    if (!supportForm.schoolName.trim()) return setErrorMsg('Please enter your school or college name.');
-    if (!supportForm.subject.trim()) return setErrorMsg('Please enter the subject of your query.');
-    if (!supportForm.message.trim()) return setErrorMsg('Please type your support message.');
-
-    setIsSubmitting(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/admin/leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          type: 'SUPPORT',
-          name: supportForm.name,
-          email: supportForm.email,
-          school_name: supportForm.schoolName,
-          priority: supportForm.priority,
-          subject: supportForm.subject,
-          message: supportForm.message,
-        }),
-      });
-
-      const resData = await response.json();
-      if (!response.ok) {
-        throw new Error(resData.error || 'Failed to submit support ticket.');
-      }
-
-      setIsSubmitted(true);
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Connection failed. Please check your internet or try again later.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const handleLoginRedirect = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
@@ -180,7 +122,6 @@ function ContactContent() {
     setIsSubmitted(false);
     setErrorMsg('');
     setDemoForm({ name: '', schoolName: '', phone: '', email: '', strength: '', demoDate: '' });
-    setSupportForm({ name: '', email: '', schoolName: '', subject: '', priority: 'Medium', message: '' });
     setLoginForm({ subdomain: '' });
   };
 
@@ -219,7 +160,7 @@ function ContactContent() {
                 Get in Touch with our <span className="text-[#2D5A27] relative">ERP Experts</span>
               </h1>
               <p className="text-sm sm:text-base text-[#2B2927]/70 font-light leading-relaxed max-w-lg">
-                Whether you want to request a live demo setup, log an active support ticket, or search for your institution&apos;s isolated schema portal, we have you covered.
+                Whether you want to request a live demo setup or search for your institution&apos;s isolated schema portal, we have you covered.
               </p>
             </div>
 
@@ -267,7 +208,7 @@ function ContactContent() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div className="text-[11.5px] text-[#2D5A27] font-semibold leading-relaxed">
-                Security Isolation Guarantee: All customer support tickets and school logs are processed inside a schema-isolated, encrypted administrative sandbox.
+                Security Isolation Guarantee: All customer demo requests and school records are processed inside a schema-isolated, encrypted administrative sandbox.
               </div>
             </div>
           </div>
@@ -278,7 +219,6 @@ function ContactContent() {
             {/* Nav Tabs - Extremely Sleek Design */}
             <div className="flex bg-[#F0EDE8] border border-black/[0.05] p-1.5 rounded-2xl gap-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
               {[
-                { id: 'support', label: 'Support Ticket', icon: FileText },
                 { id: 'demo', label: 'Request Demo', icon: Calendar },
                 { id: 'login', label: 'Client Login', icon: KeyRound }
               ].map((tab) => {
@@ -326,12 +266,10 @@ function ContactContent() {
                   </div>
                   <div className="space-y-3">
                     <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#1C1C1C]">
-                      {activeTab === 'demo' ? 'Demo Scheduled Successfully' : 'Ticket Logged Successfully'}
+                      Demo Scheduled Successfully
                     </h2>
                     <p className="text-xs sm:text-sm text-[#2B2927]/60 leading-relaxed font-light max-w-sm mx-auto">
-                      {activeTab === 'demo'
-                        ? 'Our educational onboarding engineers will email you a calendar invitation within 2 hours.'
-                        : 'Your priority ticket has been pushed to our operations dashboard. We will respond within 60 minutes.'}
+                      Our educational onboarding engineers will email you a calendar invitation within 2 hours.
                     </p>
                   </div>
                   <div className="pt-4">
@@ -349,135 +287,6 @@ function ContactContent() {
               ) : (
                 /* Interactive Forms */
                 <>
-                  {/* TAB 1: Support Ticket */}
-                  {activeTab === 'support' && (
-                    <form onSubmit={handleSupportSubmit} className="space-y-5 animate-fadeIn">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="space-y-1.5">
-                          <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">Your Name</label>
-                          <input
-                            type="text"
-                            name="name"
-                            value={supportForm.name}
-                            onChange={handleSupportChange}
-                            placeholder="Aarav Sharma"
-                            className="
-                              w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                              text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                              focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white
-                            "
-                          />
-                        </div>
-                        <div className="space-y-1.5">
-                          <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">Registered Email</label>
-                          <input
-                            type="email"
-                            name="email"
-                            value={supportForm.email}
-                            onChange={handleSupportChange}
-                            placeholder="aarav@school.com"
-                            className="
-                              w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                              text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                              focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white
-                            "
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="space-y-1.5">
-                          <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">School / College Name</label>
-                          <input
-                            type="text"
-                            name="schoolName"
-                            value={supportForm.schoolName}
-                            onChange={handleSupportChange}
-                            placeholder="DPS Public School"
-                            className="
-                              w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                              text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                              focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white
-                            "
-                          />
-                        </div>
-                        <div className="space-y-1.5">
-                          <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">Ticket Priority</label>
-                          <select
-                            name="priority"
-                            value={supportForm.priority}
-                            onChange={handleSupportChange}
-                            className="
-                              w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                              text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                              focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white appearance-none
-                            "
-                          >
-                            <option value="Low">Low (General Query)</option>
-                            <option value="Medium">Medium (Feature request)</option>
-                            <option value="High">High (Account lockout)</option>
-                            <option value="Urgent">Urgent (Billing issue)</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">Subject</label>
-                        <input
-                          type="text"
-                          name="subject"
-                          value={supportForm.subject}
-                          onChange={handleSupportChange}
-                          placeholder="Cannot download timetable PDF files"
-                          className="
-                            w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                            text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                            focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white
-                          "
-                        />
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-[9.5px] font-bold tracking-widest uppercase text-[#1C1C1C]/45">Support Message</label>
-                        <textarea
-                          name="message"
-                          value={supportForm.message}
-                          onChange={handleSupportChange}
-                          rows={4}
-                          placeholder="Describe your operational error or technical bottleneck here..."
-                          className="
-                            w-full px-4 py-3 rounded-xl border border-black/[0.08] focus:border-[#2D5A27] 
-                            text-xs bg-[#FAF9F6] focus:outline-none transition-all duration-200
-                            focus:ring-4 focus:ring-[#2D5A27]/5 focus:bg-white resize-none
-                          "
-                        />
-                      </div>
-
-                      <div className="pt-2">
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="
-                            w-full py-4 rounded-full bg-[#1C1C1C] hover:bg-[#2D5A27] text-white 
-                            text-[12px] font-bold tracking-[1.5px] uppercase flex items-center justify-center gap-2 
-                            transition-all duration-200 hover:shadow-lg disabled:opacity-50
-                          "
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="w-4 h-4 animate-spin text-white" />
-                              Logging ticket...
-                            </>
-                          ) : (
-                            <>
-                              Submit Support Ticket
-                              <Send className="w-4 h-4 text-white" />
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    </form>
-                  )}
 
                   {/* TAB 2: Request Demo */}
                   {activeTab === 'demo' && (

@@ -50,7 +50,7 @@ export const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   name: 'Contact ApanaCampus Support and Sales',
-  description: 'Request a live campus ERP demo or log an administrative support ticket.',
+  description: 'Request a live campus ERP demo or connect with educational technology onboarding specialists.',
   url: `${SITE_URL}/contact`,
   mainEntity: {
     '@type': 'ContactPoint',
