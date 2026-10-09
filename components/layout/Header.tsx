@@ -156,10 +156,10 @@ export default function Header() {
           <Link href="/"
             className="flex items-center gap-3.5 group flex-shrink-0"
             aria-label="ApnaCampus Home">
-            <Logo className="w-[38px] h-[38px] group-hover:scale-[1.03] transition-transform duration-300" />
+            <Logo className="w-[48px] h-[38px] md:w-[56px] md:h-[44px] group-hover:scale-[1.04] transition-transform duration-300" />
             <div className="flex flex-col justify-center leading-tight">
               <span className="
-                font-serif text-[16px] md:text-[17px] font-bold
+                font-serif text-[16px] md:text-[18px] font-bold
                 tracking-[3px] uppercase
               ">
                 Apana <span className="font-bold text-accent-green">Campus</span>
@@ -359,7 +359,7 @@ export default function Header() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 group cursor-pointer"
           >
-            <Logo className="w-8 h-8 group-hover:scale-[1.03] transition-transform duration-300" />
+            <Logo className="w-[42px] h-[34px] group-hover:scale-[1.04] transition-transform duration-300" />
             <div className="flex flex-col text-left">
               <span className="font-bold text-[14px] tracking-[2px] uppercase text-[#1C1C1C]">
                 ApanaCampus

@@ -21,14 +21,47 @@ export const metadata: Metadata = {
     'school and college management erp, school management erp, college erp software, best school and college erp, educational portal erp, ApanaCampus, school erp india, college erp system',
   authors: [{ name: 'ApanaCampus Team' }],
   robots: { index: true, follow: true },
-  openGraph: { type: 'website', locale: 'en_IN', siteName: 'ApanaCampus' },
-  twitter: { card: 'summary_large_image' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'ApanaCampus',
+    url: SITE_URL,
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'ApanaCampus - School and College Management ERP',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [`${SITE_URL}/og-image.png`],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${gotu.variable} ${archivo.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
         <link

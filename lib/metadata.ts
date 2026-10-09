@@ -12,7 +12,8 @@ export const orgSchema = {
   '@type': 'Organization',
   name: 'ApanaCampus',
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.svg`,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo-square.png`,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'sales',

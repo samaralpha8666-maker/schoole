@@ -47,8 +47,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-1 space-y-6">
-            <Link href="/" className="flex items-center gap-2.5 group" aria-label="ApnaCampus Home">
-              <Logo className="w-9 h-9" braceColor="text-white" />
+            <Link href="/" className="flex items-center gap-3 group" aria-label="ApnaCampus Home">
+              <Logo className="w-[50px] h-[38px]" braceColor="text-white" />
               <div className="flex flex-col text-left">
                 <span className="font-serif text-base font-bold tracking-[1.5px] text-white leading-none uppercase">
                   Apana Campus
