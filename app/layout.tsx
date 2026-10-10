@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Gotu, Archivo } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -58,6 +57,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${gotu.variable} ${archivo.variable}`}>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18501277335"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-18501277335');
+            `,
+          }}
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
@@ -70,20 +85,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans antialiased bg-base-cream text-shade-dark">
-        {/* Google tag (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18501277335"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads-tag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-18501277335');
-          `}
-        </Script>
         <Header />
         <main>{children}</main>
         <Footer />
